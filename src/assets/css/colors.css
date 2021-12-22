@@ -1,0 +1,38 @@
+:root{
+    --color-primary: #00bcd4;
+    --color-primary-dark: #008394;
+    --color-primary-light: #00bcd4;
+    --color-secondary: #ff9800;
+    --color-secondary-dark: #c27d0e;
+    --color-secondary-light: #ff9800;
+    --color-success: #8bc34a;
+    --color-success-dark: #689f38;
+    --color-success-light: #8bc34a;
+    --color-info: #03a9f4;
+    --color-info-dark: #0288d1;
+    --color-info-light: #03a9f4;
+    --color-warning: #ffc107;
+    --color-warning-dark: #c69500;
+    --color-warning-light: #ffc107;
+    --color-danger: #f44336;
+    --color-danger-dark: #ba000d;
+    --color-danger-light: #f44336;
+    --color-light: #f4f4f4;
+    --color-dark: #212121;
+    --color-black: #000;
+    --color-white: #fff;
+    --color-transparent: transparent;
+    --color-overlay: rgba(0, 0, 0, 0.5);
+    --color-overlay-light: rgba(0, 0, 0, 0.2);
+    --color-overlay-dark: rgba(255, 255, 255, 0.5);
+    --color-overlay-black: rgba(0, 0, 0, 0.5);
+    --color-overlay-white: rgba(255, 255, 255, 0.5);
+    --color-overlay-transparent: rgba(0, 0, 0, 0);
+    --color-overlay-primary: rgba(0, 188, 212, 0.5);
+    --color-overlay-secondary: rgba(255, 152, 0, 0.5);
+
+    --color-pink: #FF2586;
+    --color-blue: #01B1ED;
+    --color-light-pink: #ff258718;
+    --color-light-blue: #01b2ed23;
+}

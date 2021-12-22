@@ -1,0 +1,41 @@
+/* IMPORTS */
+@import url(../../assets/css/colors.css);
+@import url(../../assets/css/utilities.css);
+/* END IMPORTS */
+
+
+
+.logo-container{
+    width: 150px;
+}
+.offcanvas-start{
+    width: 300px !important;
+    background: black !important;
+    color: white !important;
+}
+.btn-close {
+    background: white !important;
+    color: red !important;
+}
+.nav-link{
+    padding: 0.5rem 0;
+    color: white;
+}
+.header-icon{
+    padding: 0.8rem;
+    border-radius: 50%;
+}
+@media(min-width: 768px){
+    .logo-container{
+        width: 20% !important;
+    }
+}
+@media(min-width: 1024px){
+    .menu-icon{
+        display: none;
+    }
+    .nav-link{
+        color: var(--color-dark);
+        margin: 0 20px 0 0;
+    }
+}
