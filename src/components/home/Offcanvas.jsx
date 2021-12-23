@@ -1,6 +1,6 @@
 import React from 'react'
 import { Button, Nav, Offcanvas } from 'react-bootstrap'
-import FeatherIcon from 'feather-icons-react';
+import Icons from '../reusable/Icons';
 
 function OffCanvas({ showSidebar, handleSidebar}) {
     return (
@@ -8,7 +8,7 @@ function OffCanvas({ showSidebar, handleSidebar}) {
             <Offcanvas show={showSidebar} onHide={handleSidebar}>
                 <Offcanvas.Header>
                     <Offcanvas.Title></Offcanvas.Title>
-                    <FeatherIcon icon="x" onClick={handleSidebar} />
+                    <Icons icon="x" onClick={handleSidebar} />
                 </Offcanvas.Header>
                 <Offcanvas.Body>
                     <Nav className="d-block">
@@ -16,15 +16,15 @@ function OffCanvas({ showSidebar, handleSidebar}) {
                         <Nav.Link href="#link">About us</Nav.Link>
                         <Nav.Link href="#link">Our services</Nav.Link>
                         <Nav.Link href="#link">Contact us</Nav.Link>
-                        <Nav.Link href="#link">
-                            <Button variant="primary">
-                                <FeatherIcon icon="log-in" size={16} />
+                        <Nav.Link href="#link" className=''>
+                            <button className='button-primary d-block' variant="primary">
+                                <Icons icon="log-in" size={16} />
                                 &nbsp;Login
-                            </Button>
-                            <Button variant="secondary" className='ms-2'>
-                                <FeatherIcon icon="user" size={16} />
+                            </button>
+                            <button className='button-secondary mt-3'>
+                                <Icons icon="user" size={16} />
                                 &nbsp;Register
-                            </Button>
+                            </button>
                         </Nav.Link>
                     </Nav>
                 </Offcanvas.Body>

@@ -3,7 +3,7 @@ import Slider1 from '../../assets/images/slider01.jpg'
 import Slider2 from '../../assets/images/slider02.jpg'
 import Slider3 from '../../assets/images/slider03.jpg'
 import { Swiper, SwiperSlide } from 'swiper/react';
-import SwiperCore, {Navigation, Pagination, Scrollbar, Autoplay, Thumbs, EffectFade} from 'swiper';
+import SwiperCore, { Pagination, Autoplay, EffectFade} from 'swiper';
 // swiper bundle styles
 import 'swiper/css/bundle'
 
@@ -45,7 +45,7 @@ const sliders = [
 function Slider() {
     return (
         <>
-            <div className="bg-success">
+            <div className="">
                 <Swiper
                     // spaceBetween={50}
                     effect={'fade'}
@@ -59,7 +59,7 @@ function Slider() {
                             return <SwiperSlide key={i} className=''>
                                             <img src={data.image} alt="" className='w-100 h-100 object-fit-cover object-position-center'/>
                                             <div className="slider-overlay"></div>
-                                            <Container fluid='lg'>
+                                            <Container fluid='lg' className=''>
                                                 <div className='slider-description'>
                                                     <p className='animate__animated animate__fadeInUp'>{data.description}</p>
                                                     <h1 className="slider-tagline animate__animated animate__fadeInUp animate__delay-1s"> {data.heading} </h1>

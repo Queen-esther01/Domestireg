@@ -42,9 +42,22 @@
 .object-position-center{
     object-position: center;
 }
+.object-position-top{
+    object-position: top;
+}
+.object-position-left{
+    object-position: left;
+}
 .button-primary{
     border: none;
     background: var(--color-pink);
+    color: white;
+    padding: 10px 30px;
+    border-radius: 2rem;
+}
+.button-secondary{
+    border: none;
+    background: var(--color-blue);
     color: white;
     padding: 10px 30px;
     border-radius: 2rem;

@@ -17,7 +17,7 @@ function Header() {
             <Container fluid="lg">
                 <div className="d-flex justify-content-between align-items-center p-3 py-4 items-center">
                     <Offcanvas showSidebar={showSidebar} handleSidebar={handleSidebar} />
-                    <FeatherIcon icon="menu" className='menu-icon pointer' size={30} onClick={handleSidebar}/>
+                    <Icons icon='menu' className='menu-icon pointer' size={30} onClick={handleSidebar} />
                     <div className="logo-container">
                         <img src={Logo} alt="domestireg" className='w-100 h-100' />
                     </div>
