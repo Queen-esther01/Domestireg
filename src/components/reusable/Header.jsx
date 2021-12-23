@@ -13,7 +13,7 @@ function Header() {
     return (
         <>
             <Container fluid="lg">
-                <div className="d-flex justify-content-between align-items-center p-3 py-4 items-center">
+                <div className="d-flex justify-content-between align-items-center px-3 py-4 items-center">
                     <Offcanvas showSidebar={showSidebar} handleSidebar={handleSidebar} />
                     <Icons icon='menu' className='menu-icon pointer' size={30} onClick={handleSidebar} />
                     <div className="logo-container">

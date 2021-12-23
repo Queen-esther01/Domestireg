@@ -12,8 +12,8 @@ function OffCanvas({ showSidebar, handleSidebar}) {
                 </Offcanvas.Header>
                 <Offcanvas.Body>
                     <Nav className="d-block">
-                        <Nav.Link href="#home">Home</Nav.Link>
-                        <Nav.Link href="#link">About us</Nav.Link>
+                        <Nav.Link href="/">Home</Nav.Link>
+                        <Nav.Link href="/about-us">About us</Nav.Link>
                         <Nav.Link href="#link">Our services</Nav.Link>
                         <Nav.Link href="#link">Contact us</Nav.Link>
                         <Nav.Link href="#link" className=''>
