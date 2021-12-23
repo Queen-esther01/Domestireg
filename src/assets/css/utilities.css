@@ -62,3 +62,8 @@
     padding: 10px 30px;
     border-radius: 2rem;
 }
+.fancy-font{
+    font-family: 'Allura', 'Nunito', sans-serif;
+    color: var(--color-pink);
+    font-weight: bold;
+}

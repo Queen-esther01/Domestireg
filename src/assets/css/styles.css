@@ -162,3 +162,53 @@ h1,h2,h3,h4,h5,h6{
     color: var(--color-pink);
     font-size: 1.5em;
 }
+
+
+/* HOW IT WORKS - HOMEPAGE */
+.how-it-works-container{
+    text-align: center;
+    padding: 0 20px;
+    margin: auto;
+}
+.how-it-works-container h2{
+    margin: 0 0 30px 0;
+}
+.process-icon-container{
+    width: 80px;
+    height: 80px;
+    background-color: var(--color-light-pink);
+    margin: 20px auto;
+    padding: 20px;
+    border-radius: 50%;
+}
+.process-container{
+    margin: 30px 0;
+    position: relative;
+}
+.process-container h6{
+    font-weight: bolder;
+}
+@media(min-width:1024px){
+    .how-it-works-container{
+        padding: 0;
+    }
+    .process-one::after{
+        content: url(../../assets/images/line-indicator.png);
+        position: absolute;
+        top: 20px;
+        right: -100px;
+    }
+    .process-two::after{
+        content: url(../../assets/images/line-indicator-inverse.png);
+        position: absolute;
+        top: 10px;
+        right: -100px;
+    }
+}
+
+/* DIVIDER */
+.divider{
+    margin: 10px auto;
+    border-bottom: 1px solid var(--color-overlay-light);
+    width: 90%;
+}
