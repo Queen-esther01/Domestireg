@@ -28,7 +28,7 @@ const testimonials = [
 function Testimonial() {
     return (
         <>
-            <div className="testimonial-container py-5 my-5 bg-light-blue">
+            <div className="testimonial-container py-5 my-5 bg-light-pink">
                 <Container fluid='lg' className='py-5'>
                     <Swiper
                         //spaceBetween={300}

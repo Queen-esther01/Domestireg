@@ -1,5 +1,6 @@
 import React from 'react'
 import Aboutus from '../components/home/Aboutus'
+import Choice from '../components/home/Choice'
 import Howitworks from '../components/home/Howitworks'
 import ServiceBouquets from '../components/home/ServiceBouquets'
 import Slider from '../components/home/Slider'
@@ -17,6 +18,7 @@ function Home() {
             <Divider/>
             <ServiceBouquets/>
             <Testimonial/>
+            <Choice/>
         </>
     )
 }
