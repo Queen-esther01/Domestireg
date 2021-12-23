@@ -11,7 +11,6 @@ import 'swiper/css/bundle'
 import 'swiper/css'
 
 // modules styles
-import 'swiper/css/navigation'
 import 'swiper/css/pagination'
 import { Container } from 'react-bootstrap';
 
@@ -56,7 +55,7 @@ function Slider() {
                 >
                     {
                         sliders.map((data, i) => {
-                            return <SwiperSlide key={i} className=''>
+                            return <SwiperSlide key={i} className='swiper-slide-hero'>
                                             <img src={data.image} alt="" className='w-100 h-100 object-fit-cover object-position-center'/>
                                             <div className="slider-overlay"></div>
                                             <Container fluid='lg' className=''>

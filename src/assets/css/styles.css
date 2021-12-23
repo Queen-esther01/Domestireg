@@ -45,7 +45,7 @@ h1,h2,h3,h4,h5,h6{
 
 
 /* HOME HERO SLIDER */
-.swiper-slide{
+.swiper-slide-hero{
     height: 90vh !important;
     position: relative;
 }
@@ -81,12 +81,12 @@ h1,h2,h3,h4,h5,h6{
     /* text-transform: uppercase; */
 }
 @media(min-width: 768px){
-    .swiper-slide{
+    .swiper-slide-hero{
         height: 70vh !important;
     }
 }
 @media(min-width: 1024px){
-    .swiper-slide{
+    .swiper-slide-hero{
         height: 85vh !important;
     }
     .slider-description{
@@ -222,4 +222,32 @@ h1,h2,h3,h4,h5,h6{
 }
 .medicals-image-container img{
     border-radius: 1rem;
+}
+
+
+/* TESTIMONIAL SECTION - HOMEPAGE */
+.testimonial-container{
+    background: red;
+    text-align: center;
+    margin: 0 auto;
+}
+.swiper-slide-testimonial{
+    padding: 0 0 30px 0;
+}
+.testimonial-author{
+    font-weight: bold;
+}
+.testimonial-content{
+    max-width: 350px;
+    margin: 0 auto;
+}
+@media(min-width:768px){
+    .testimonial-content{
+        max-width: 400px;
+    }
+}
+@media(min-width:1024px){
+    .testimonial-content{
+        max-width: 500px;
+    }
 }
