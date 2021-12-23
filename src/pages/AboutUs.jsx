@@ -1,6 +1,8 @@
 import React from 'react'
 import Info from '../components/aboutus/Info'
 import OurStory from '../components/aboutus/OurStory'
+import Process from '../components/aboutus/Process'
+import Footer from '../components/reusable/Footer'
 import Header from '../components/reusable/Header'
 import Hero from '../components/reusable/Hero'
 
@@ -18,6 +20,8 @@ function AboutUs() {
             <Hero heading={'About us'} breadcrumbs={breadcrumbs}/>
             <Info/>
             <OurStory/>
+            <Process/>
+            <Footer/>
         </>
     )
 }
