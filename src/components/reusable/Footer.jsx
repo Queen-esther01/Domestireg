@@ -39,13 +39,13 @@ function Footer() {
                         <Col xs={12} md={4} lg={3} className='mt-4 address-container'>
                             <h5 className='mb-2'>Location</h5>
                             <span>13 Allan Street, Agungi, Lekki</span>
-                            <p><Link to='#'> admin@domestireg.com </Link> </p>
+                            <p><Link to='#' className='remove-link-color'> admin@domestireg.com </Link> </p>
                         </Col>
                         <Col xs={12} md={3} lg={2} className='mt-4 social-icon-container'>
                             <h5 className='mb-3'>Navigation</h5>
                             <p>Home</p>
-                            <p><Link to='/about-us' className='text-decoration-none'>About us</Link></p>
-                            <p>Contact us</p>
+                            <p><Link to='/about-us' className='remove-link-color text-decoration-none'>About us</Link></p>
+                            <p><Link to='/contact-us' className='remove-link-color text-decoration-none'>Contact us</Link></p>
                         </Col>
                         <Col xs={12} md={4} lg={2} className='my-4 social-icon-container'>
                             <h5 className='mb-3'>Privacy</h5>

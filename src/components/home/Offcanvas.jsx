@@ -14,8 +14,8 @@ function OffCanvas({ showSidebar, handleSidebar}) {
                     <Nav className="d-block">
                         <Nav.Link href="/">Home</Nav.Link>
                         <Nav.Link href="/about-us">About us</Nav.Link>
-                        <Nav.Link href="#link">Our services</Nav.Link>
-                        <Nav.Link href="#link">Contact us</Nav.Link>
+                        <Nav.Link href="#">Our services</Nav.Link>
+                        <Nav.Link href="/contact-us">Contact us</Nav.Link>
                         <Nav.Link href="#link" className=''>
                             <button className='button-primary d-block' variant="primary">
                                 <Icons icon="log-in" size={16} />

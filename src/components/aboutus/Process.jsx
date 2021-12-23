@@ -11,28 +11,28 @@ function Process() {
                         <Row>
                             <Col xs={12} sm={6} md={6}>
                                 <div className='shadow-lg text-center py-4 px-2 mt-5 about-us-process' >
-                                    <Icons icon='shopping-cart' size={60} className={'text-pink bg-light-pink p-3 mb-3 rounded-circle'} />
+                                    <Icons icon='shopping-cart' size={60} className={'text-blue bg-light-blue p-3 mb-3 rounded-circle'} />
                                     <h6>Pick a service</h6>
                                     <p className='text-grey'>Choose from a list of service bouquet and select your preferred check.</p>
                                 </div>
                             </Col>
                             <Col xs={12} sm={6} md={6}>
                                 <div className='shadow-lg text-center py-4 px-2 mt-5 about-us-process' >
-                                    <Icons icon='shopping-cart' size={60} className={'text-pink bg-light-pink p-3 mb-3 rounded-circle'} />
+                                    <Icons icon='user-check' size={60} className={'text-blue bg-light-blue p-3 mb-3 rounded-circle'} />
                                     <h6>Register Domestics</h6>
-                                    <p className='text-grey'>Fill the datails of the domestic staff intended to undergo the selected tests.</p>
+                                    <p className='text-grey'>Fill the details of the domestic staff intended to undergo the selected tests.</p>
                                 </div>
                             </Col>
                             <Col xs={12} sm={6} md={6}>
                                 <div className='shadow-lg text-center py-4 px-2 mt-5 about-us-process'>
-                                    <Icons icon='shopping-cart' size={60} className={'text-pink bg-light-pink p-3 mb-3 rounded-circle'} />
+                                    <Icons icon='shield' size={60} className={'text-blue bg-light-blue p-3 mb-3 rounded-circle'} />
                                     <h6>Secured Payment</h6>
                                     <p className='text-grey'>Pay for the preferred service selected through our secure payment options.</p>
                                 </div>
                             </Col>
                             <Col xs={12} sm={6} md={6}>
                                <div className='shadow-lg text-center py-4 px-2 mt-5 about-us-process'>
-                                    <Icons icon='shopping-cart' size={60} className={'text-pink bg-light-pink p-3 mb-3 rounded-circle'} />
+                                    <Icons icon='check-circle' size={60} className={'text-blue bg-light-blue p-3 mb-3 rounded-circle'} />
                                     <h6>Get Result</h6>
                                     <p className='text-grey'>Get detailed and verified check results within the proposed timeline.</p>
                                 </div>

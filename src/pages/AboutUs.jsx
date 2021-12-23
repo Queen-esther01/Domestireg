@@ -6,18 +6,18 @@ import Footer from '../components/reusable/Footer'
 import Header from '../components/reusable/Header'
 import Hero from '../components/reusable/Hero'
 
-const breadcrumbs = [
+const breadcrumbs = 
     {
         previous: 'Home',
         previousLink: '/',
         current: 'About us'
     }
-]
+
 function AboutUs() {
     return (
         <>
             <Header/>
-            <Hero heading={'About us'} breadcrumbs={breadcrumbs}/>
+            <Hero heading={'About us'} breadcrumb={breadcrumbs}/>
             <Info/>
             <OurStory/>
             <Process/>

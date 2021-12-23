@@ -20,10 +20,10 @@ function Header() {
                         <img src={Logo} alt="domestireg" className='w-100 h-100' />
                     </div>
                     <Nav className="hide-on-mobile">
-                        <Nav.Link href="#home">Home</Nav.Link>
-                        <Nav.Link href="#link">About us</Nav.Link>
+                        <Nav.Link href="/">Home</Nav.Link>
+                        <Nav.Link href="/about-us">About us</Nav.Link>
                         <Nav.Link href="#link">Our services</Nav.Link>
-                        <Nav.Link href="#link">Contact us</Nav.Link>
+                        <Nav.Link href="/contact-us">Contact us</Nav.Link>
                     </Nav>
                     <div className='d-flex justify-content-between'>
                         <Icons icon='user' size={45} className='header-icon me-2 hide-on-mobile bg-light-blue' />
