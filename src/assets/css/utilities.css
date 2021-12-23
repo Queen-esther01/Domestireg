@@ -36,3 +36,16 @@
         display: flex;
     }
 }
+.object-fit-cover{
+    object-fit: cover;
+}
+.object-position-center{
+    object-position: center;
+}
+.button-primary{
+    border: none;
+    background: var(--color-pink);
+    color: white;
+    padding: 10px 30px;
+    border-radius: 2rem;
+}
