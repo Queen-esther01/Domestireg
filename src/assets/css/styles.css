@@ -16,10 +16,10 @@ h1,h2,h3,h4,h5,h6{
     background: black !important;
     color: white !important;
 }
-.btn-close {
+/* .btn-close {
     background: white !important;
     color: red !important;
-}
+} */
 .nav-link{
     padding: 0.5rem 0;
     color: white;
@@ -59,7 +59,7 @@ h1,h2,h3,h4,h5,h6{
 }
 .slider-description{
     position: absolute;
-    top: 50%;
+    top: 40%;
     right: 0;
     left: 0;
     bottom: 0;
@@ -379,5 +379,27 @@ h1,h2,h3,h4,h5,h6{
     .contact-us-form{
         margin: 0 auto;
         padding: 0;
+    }
+}
+.form-group input{
+    padding: 13px 20px;
+}
+
+
+
+
+
+/* REGISTER PAGE */
+.register-form{
+    margin: 40px auto 0 auto;
+    padding: 0 0.8em;
+    border-radius: 1rem;
+    max-width: 380px;
+}
+@media(min-width:768px){
+    .register-form{
+        max-width: 400px;
+        margin: 40px auto;
+        padding: 0 1.5em;
     }
 }

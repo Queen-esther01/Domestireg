@@ -20,31 +20,31 @@ function ContactDetails() {
                             <h2 className='about-us-heading'>We would love to hear from you</h2>
                             <p className='about-us-text'>Please reach out to us using the contact details below, we are always available to help with your screening needs</p>
                             <div className='mt-5'>
-                                <h6>OUR LOCATION</h6>
-                                <p>13 Allan Street, Agungi, Lekki</p>
+                                <h6 className='font-xs mb-3'>OUR LOCATION</h6>
+                                <p className=''>13 Allan Street, Agungi, Lekki</p>
                             </div>
                             <div className='mt-5'>
-                                <h6>CONTACT INFORMATION</h6>
-                                <span>(434) 546-4356</span>
-                                <p>admin@domestireg.com</p>
+                                <h6 className='font-xs mb-3'>CONTACT INFORMATION</h6>
+                                <span className=''>(434) 546-4356</span>
+                                <p className='mt-1'>admin@domestireg.com</p>
                             </div>
                         </div>
-                        <Divider styles={{  width: '100%' }}/>
-                        <Form className='contact-us-form mt-5'>
-                            <h3>Leave a message</h3>
-                            <Form.Group className="my-4" >
+                        <Divider styles={{  width: '100%', margin: '40px 0 0 0' }}/>
+                        <Form className='contact-us-form'>
+                            <h3 className='my-4 pt-2 pb-3'>Leave a message</h3>
+                            <Form.Group className="my-4 form-group" >
                                 <Form.Control type="text" placeholder="Your name" className='' />
                             </Form.Group>
-                            <Form.Group className="mb-4" >
+                            <Form.Group className="mb-4 form-group" >
                                 <Form.Control type="email" placeholder="Email address" className='' />
                             </Form.Group>
-                            <Form.Group className="mb-4" >
+                            <Form.Group className="mb-4 form-group" >
                                 <Form.Control type="tel" placeholder="Phone number" className='' />
                             </Form.Group>
-                            <Form.Group className="mb-4" >
+                            <Form.Group className="mb-4 form-group" >
                                 <Form.Control type="text" placeholder="Subject" className='' />
                             </Form.Group>
-                            <Form.Group className="mb-3">
+                            <Form.Group className="mb-3 form-group">
                                 <Form.Control as="textarea" rows={3} placeholder='Type in your message here' />
                             </Form.Group>
                             <button className='button-primary mt-3' type="submit">

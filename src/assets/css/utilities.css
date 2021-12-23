@@ -7,6 +7,9 @@
 .text-pink{
     color: var(--color-pink) !important;
 }
+.text-dark-pink{
+    color: var(--color-dark-pink);
+}
 .bg-pink{
     background: var(--color-pink) !important;
 }
@@ -81,4 +84,25 @@
 }
 .lh-large{
     line-height: 1.5em;
+}
+.font-xs{
+    font-size: 0.8em;
+}
+.font-sm{
+    font-size: 1em;
+}
+.font-md{
+    font-size: 1.2em;
+}
+.font-lg{
+    font-size: 1.5em;
+}
+.font-xl{
+    font-size: 2em;
+}
+.font-xxl{
+    font-size: 2.5em;
+}
+.font-xxxl{
+    font-size: 3em;
 }
