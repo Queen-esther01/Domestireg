@@ -67,3 +67,6 @@
     color: var(--color-pink);
     font-weight: bold;
 }
+.text-grey{
+    color: var(--color-grey);
+}

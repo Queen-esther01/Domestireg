@@ -1,7 +1,5 @@
 import React, { useState } from 'react'
 import { Container, Nav } from 'react-bootstrap';
-import Button from 'react-bootstrap/Button';
-import FeatherIcon from 'feather-icons-react';
 import Logo from '../../assets/images/Domestireg.png'
 import Offcanvas from '../home/Offcanvas';
 import Icons from './Icons';

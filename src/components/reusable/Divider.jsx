@@ -1,9 +1,9 @@
 import React from 'react'
 
-function Divider() {
+function Divider({ styles }) {
     return (
         <>
-            <div className="divider"></div>
+            <div className="divider" style={styles}></div>
         </>
     )
 }

@@ -132,6 +132,7 @@ h1,h2,h3,h4,h5,h6{
         max-width: 500px;
         margin: 30px auto 0 auto;
         text-align: left;
+        padding: 0;
     }
 }
 .about-us-tagline{
@@ -250,4 +251,49 @@ h1,h2,h3,h4,h5,h6{
     .testimonial-content{
         max-width: 500px;
     }
+}
+
+
+/* FOOTER SECTION */
+.footer-container{
+    text-align: center;
+    /* background: linear-gradient(to right, var(--color-blue), var(--color-pink)); */
+    /* --color-pink: #FF2586;
+    --color-blue: #01B1ED; */
+    background:#720e3b;
+    margin: 100px 0 0 0;
+}
+.contact-container div{
+    margin: 10px 0;
+}
+@media(min-width:768px){
+    .contact-container{
+        display: flex;
+        text-align: left;
+        align-items: start;
+    }
+    .contact-container div{
+        margin: 0 0 0 20px;
+    }
+    .social-icon-container{
+        text-align: left;
+        margin: 0 0 0 30px;
+    }
+    .address-container{
+        text-align: left !important;
+    }
+}
+@media(min-width:1024px){
+    .social-icon-container{
+        margin: 0 0 0 40px;
+    }
+}
+.address-container{
+    text-align: center;
+}
+.address-container span{
+    color: var(--color-grey) !important;
+}
+.social-icon-container p{
+    color: var(--color-grey);
 }

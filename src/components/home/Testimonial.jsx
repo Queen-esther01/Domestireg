@@ -41,7 +41,7 @@ function Testimonial() {
                     >
                         {
                             testimonials.map((data, i) => {
-                                return <Row key={i} className='justify-content-md-center'>
+                                return <Row key={data.name} className='justify-content-md-center'>
                                             <Col xs={12}>
                                                 <SwiperSlide className='swiper-slide-testimonial'>
                                                     <div className='testimonial-content'>
