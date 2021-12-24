@@ -413,3 +413,10 @@ h1,h2,h3,h4,h5,h6{
     background-size: cover;
     background-position: center;
 }
+
+/* CART */
+.cart-hero{
+    background-image: linear-gradient(0deg, rgba(0, 0, 0, 0.486), rgba(0, 0, 0, 0.568)), url(../../assets/images/card.jpg) !important;
+    background-size: contain;
+    background-position: top;
+}

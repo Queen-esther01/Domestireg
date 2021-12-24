@@ -7,6 +7,7 @@ import Tippy from '@tippyjs/react';
 import 'tippy.js/dist/tippy.css';
 import Login from '../../auth/Login';
 import Register from '../../auth/Register';
+import { Link } from 'react-router-dom';
 
 function Header() {
     const [showSidebar, setshowSidebar] = useState(false)
@@ -38,7 +39,9 @@ function Header() {
                     </Nav>
                     <div className='d-flex justify-content-between'>
                         <Icons icon='user' onClick={handleLoginModal} size={45} className='header-icon me-2 pointer hide-on-mobile bg-light-blue' />
-                        <Icons icon='shopping-cart' size={45} className='header-icon pointer bg-light-pink' />
+                        <Link to='/cart' className='remove-link-color'>
+                            <Icons icon='shopping-cart' size={45} className='header-icon pointer bg-light-pink' />
+                        </Link>
                     </div>
                 </div>
             </Container>

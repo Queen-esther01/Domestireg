@@ -20,8 +20,8 @@ function ResetPassword() {
             <Container fluid='lg'>
                 <div className="register-form py-4">
                     <div className="mb-4">
-                        <h4>Reset password</h4>
-                        <p className='text-grey mt-3'> Please enter your new password</p>
+                        <h5>Reset password</h5>
+                        <p className='text-grey mt-3'> Please enter your new password in the fields below</p>
                     </div>
                     <Form.Group className="mb-4" >
                         <Form.Label>Password</Form.Label>
