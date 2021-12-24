@@ -26,7 +26,7 @@ function Register() {
             <Header/>
             <Hero breadcrumb={breadcrumbs} extraStyle='register-hero text-white'/>
             <Container fluid='lg'>
-                <div className="register-form py-5">
+                <div className="register-form py-4">
                     <div className="mb-4">
                         <h5>Register</h5>
                         <p className='text-grey mt-3'>Create your account. It's free and only takes a minute</p>

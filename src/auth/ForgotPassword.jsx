@@ -22,7 +22,7 @@ function ForgotPassword() {
                 <div className="register-form py-4">
                     <div className="mb-4">
                         <h5>Forgot password</h5>
-                        <p className='text-grey mt-3'> Please enter your username. You will receive a link to create a new password via email.</p>
+                        <p className='text-grey mt-3'> Please enter your email address. You will receive a link to create a new password via email.</p>
                     </div>
                     <Form.Group className="mb-3" >
                         <Form.Label>Email Address</Form.Label>
