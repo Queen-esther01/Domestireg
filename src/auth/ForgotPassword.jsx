@@ -21,7 +21,7 @@ function ForgotPassword() {
             <Container fluid='lg'>
                 <div className="register-form py-4">
                     <div className="mb-4">
-                        <h3>Forgot password</h3>
+                        <h4>Forgot password</h4>
                         <p className='text-grey mt-3'> Please enter your username. You will receive a link to create a new password via email.</p>
                     </div>
                     <Form.Group className="mb-3" >

@@ -28,7 +28,7 @@ function Register() {
             <Container fluid='lg'>
                 <div className="register-form py-5">
                     <div className="mb-4">
-                        <h3>Register</h3>
+                        <h4>Register</h4>
                         <p className='text-grey mt-3'>Create your account. It's free and only takes a minute</p>
                     </div>
                     <Form.Group className="mb-3" >

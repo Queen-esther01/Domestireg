@@ -9,7 +9,7 @@ function Login({ open, onClose }) {
         <>
             <Modal show={open} onHide={onClose} size="md" aria-labelledby="contained-modal-title-vcenter" centered >
                 <Modal.Header closeButton className='px-4'>
-                    <Modal.Title className='font-md' id="contained-modal-title-vcenter">
+                    <Modal.Title className='' id="contained-modal-title-vcenter">
                         Sign in
                     </Modal.Title>
                 </Modal.Header>
