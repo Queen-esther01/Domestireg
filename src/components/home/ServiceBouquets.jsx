@@ -20,7 +20,7 @@ function ServiceBouquets() {
                             <div className='mt-3'>
                                 <h5>Medical Check</h5>
                                 <p className='mt-2'>
-                                    <Link to='#'>
+                                    <Link to='/medical-bouquet'>
                                         Select option
                                         <Icons icon='chevrons-right'/>
                                     </Link>

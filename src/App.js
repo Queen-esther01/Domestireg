@@ -8,6 +8,7 @@ import Register from './auth/Register';
 import ForgotPassword from './auth/ForgotPassword';
 import ResetPassword from './auth/ResetPassword';
 import Cart from './pages/Cart';
+import MedicalBouquet from './pages/MedicalBouquet';
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
         <Route path="/forgot-password" element={<ForgotPassword />} />
         <Route path="/reset-password" element={<ResetPassword />} />
         <Route path="/cart" element={<Cart />} />
+        <Route path="/medical-bouquet" element={<MedicalBouquet/>} />
       </Routes>
     </Router>
   );

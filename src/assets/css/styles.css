@@ -424,3 +424,32 @@ h1,h2,h3,h4,h5,h6{
     margin: 0 auto;
     padding: 0 1em;
 }
+
+/* MEDICAL */
+.medical-hero{
+    background-image: linear-gradient(0deg, rgba(0, 0, 0, 0.486), rgba(0, 0, 0, 0.568)), url(../../assets/images/heart.jpg) !important;
+    background-size: cover;
+    background-position: center;
+}
+.service-container{
+    padding: 0 1em;
+}
+.bouquet-image{
+    width: 100%;
+    margin: 0 auto;
+}
+.bouquet-image img{
+    border-radius: 1rem;
+}
+.cart-icon{
+    border-top-right-radius: 1rem;
+    border-top-left-radius: 0;
+    border-bottom-right-radius: 0;
+    border-bottom-left-radius: 1rem;
+    border: 1px solid rgb(214, 214, 214);
+}
+@media(min-width:768px){
+    .service-container{
+        padding: 0;
+    }
+}

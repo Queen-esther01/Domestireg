@@ -52,7 +52,7 @@ function Footer() {
                             <p>Terms & Conditions</p>
                         </Col>
                     </Row>
-                    <p className='text-grey mt-5'>Copyright &copy; <span className="fancy-font">Domestireg.</span> All Rights Reserved </p>
+                    <p className='mt-5'>Copyright &copy; <span className="fancy-font">Domestireg.</span> All Rights Reserved </p>
                 </Container>
             </div>
         </>

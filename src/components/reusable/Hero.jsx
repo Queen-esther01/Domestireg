@@ -13,10 +13,10 @@ function Hero({ breadcrumb , extraStyle}) {
                     <h2 className='hero-heading'>{breadcrumb.current}</h2>
                     <div key={breadcrumb.current}>
                         <p>
-                            <span className="text-grey">
+                            <span className="" style={{ color: 'lightgrey'}}>
                                 <Link to={breadcrumb.previousLink} className='text-decoration-none remove-link-color'> {breadcrumb.previous} </Link> 
                             </span>
-                            <Icons icon='chevron-right' size={15} className={'text-grey'} />
+                            <Icons icon='chevron-right' size={15} style={{ color: 'lightgrey'}} className={'text-grey'} />
                             {breadcrumb.current}
                         </p>
                     </div>

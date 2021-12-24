@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Container, Nav } from 'react-bootstrap';
+import { Container, Nav, NavDropdown } from 'react-bootstrap';
 import Logo from '../../assets/images/Domestireg.png'
 import Offcanvas from '../home/Offcanvas';
 import Icons from './Icons';
@@ -34,7 +34,10 @@ function Header() {
                     <Nav className="hide-on-mobile">
                         <Nav.Link href="/">Home</Nav.Link>
                         <Nav.Link href="/about-us">About us</Nav.Link>
-                        <Nav.Link href="#link">Our services</Nav.Link>
+                        <NavDropdown title="Our services" id="navbarScrollingDropdown">
+                            <NavDropdown.Item href="/medical-bouquet">Medical checks</NavDropdown.Item>
+                            <NavDropdown.Item href="/background-bouquet">Background & security checks</NavDropdown.Item>
+                        </NavDropdown>
                         <Nav.Link href="/contact-us">Contact us</Nav.Link>
                     </Nav>
                     <div className='d-flex justify-content-between'>
