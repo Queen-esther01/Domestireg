@@ -441,6 +441,9 @@ h1,h2,h3,h4,h5,h6{
 .bouquet-image img{
     border-radius: 1rem;
 }
+.rounded-img{
+    border-radius: 1rem;
+}
 .cart-icon{
     border-top-right-radius: 1rem;
     border-top-left-radius: 0;
@@ -452,4 +455,9 @@ h1,h2,h3,h4,h5,h6{
     .service-container{
         padding: 0;
     }
+}
+
+/* SERVICE DETAILS */
+.service-details-image{
+
 }

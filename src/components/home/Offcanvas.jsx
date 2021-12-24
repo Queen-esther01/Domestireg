@@ -9,7 +9,7 @@ function OffCanvas({ showSidebar, handleSidebar, toggleLogin }) {
             <Offcanvas show={showSidebar} onHide={handleSidebar}>
                 <Offcanvas.Header>
                     <Offcanvas.Title></Offcanvas.Title>
-                    <Icons icon="x" onClick={handleSidebar} />
+                    <Icons icon="x" onClick={handleSidebar} className={'pointer'} />
                 </Offcanvas.Header>
                 <Offcanvas.Body>
                     <Nav className="d-block ms-3">
@@ -20,18 +20,16 @@ function OffCanvas({ showSidebar, handleSidebar, toggleLogin }) {
                             <NavDropdown.Item href="/background-bouquet">Background & security checks</NavDropdown.Item>
                         </NavDropdown>
                         <Nav.Link href="/contact-us">Contact us</Nav.Link>
-                        <Nav.Link href="#link" className=''>
-                            <button onClick={toggleLogin} className='button-primary d-block' variant="primary">
-                                <Icons icon="log-in" size={16} />
-                                &nbsp;Login
+                        <button onClick={toggleLogin} className='mt-2 button-primary d-block' variant="primary">
+                            <Icons icon="log-in" size={16} />
+                            &nbsp;Login
+                        </button>
+                        <Link to='/register'>
+                            <button className='button-secondary mt-3'>
+                                <Icons icon="user" size={16} />
+                                &nbsp;Register
                             </button>
-                            <Link to='/register'>
-                                <button className='button-secondary mt-3'>
-                                    <Icons icon="user" size={16} />
-                                    &nbsp;Register
-                                </button>
-                            </Link>
-                        </Nav.Link>
+                        </Link>
                     </Nav>
                 </Offcanvas.Body>
             </Offcanvas>
