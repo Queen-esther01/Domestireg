@@ -17,7 +17,7 @@ function AboutUs() {
     return (
         <>
             <Header/>
-            <Hero heading={'About us'} breadcrumb={breadcrumbs}/>
+            <Hero breadcrumb={breadcrumbs} extraStyle='about-us-hero text-white' />
             <Info/>
             <OurStory/>
             <Process/>

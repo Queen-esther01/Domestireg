@@ -325,6 +325,11 @@ h1,h2,h3,h4,h5,h6{
 }
 
 /* Our STORY */
+.about-us-hero{
+    background-image: linear-gradient(0deg, rgba(0, 0, 0, 0.486), rgba(0, 0, 0, 0.568)), url(../../assets/images/service.jpg) !important;
+    background-size: cover;
+    background-position: center;
+}
 .our-story-image-container{
     width: 90%;
     height: 100%;
@@ -392,14 +397,19 @@ h1,h2,h3,h4,h5,h6{
 /* REGISTER PAGE */
 .register-form{
     margin: 40px auto 0 auto;
-    padding: 0 0.8em;
-    border-radius: 1rem;
+    padding: 0 1em;
     max-width: 380px;
+    background: #F6F6F6;
 }
 @media(min-width:768px){
     .register-form{
-        max-width: 400px;
+        max-width: 500px;
         margin: 40px auto;
-        padding: 0 1.5em;
+        padding: 0 3em;
     }
+}
+.register-hero{
+    background-image: linear-gradient(0deg, rgba(0, 0, 0, 0.486), rgba(0, 0, 0, 0.568)), url(../../assets/images/welcome.jpg) !important;
+    background-size: cover;
+    background-position: center;
 }

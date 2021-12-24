@@ -1,9 +1,10 @@
 import React, { useState } from 'react'
-import { Container, Form, Modal } from 'react-bootstrap'
+import { Container, Form } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
 import Footer from '../components/reusable/Footer'
 import Header from '../components/reusable/Header'
 import Login from './Login'
+import Hero from '../components/reusable/Hero'
 
 function Register() {
     const [showLoginModal, setshowLoginModal] = useState(false)
@@ -12,14 +13,22 @@ function Register() {
         setshowLoginModal(!showLoginModal)
     }
 
+    const breadcrumbs = 
+    {
+        previous: 'Home',
+        previousLink: '/',
+        current: 'Create account'
+    }
+
     return (
         <>
             <Login open={showLoginModal} onClose={handleLoginModal}/>
             <Header/>
+            <Hero breadcrumb={breadcrumbs} extraStyle='register-hero text-white'/>
             <Container fluid='lg'>
-                <div className="register-form shadow-lg py-5">
-                    <div className="text-center mb-4">
-                        <h2>Register</h2>
+                <div className="register-form py-5">
+                    <div className="mb-4">
+                        <h3>Register</h3>
                         <p className='text-grey mt-3'>Create your account. It's free and only takes a minute</p>
                     </div>
                     <Form.Group className="mb-3" >
@@ -46,7 +55,7 @@ function Register() {
                         Create account
                     </button>
                     <div className="">
-                        Already have an account? <Link to='#' onClick={handleLoginModal} className='remove-link-color text-decoration-none text-pink'>Sign in</Link>
+                        Already have an account? <Link to='#' onClick={handleLoginModal} className='remove-link-color text-decoration-none text-blue'>Sign in</Link>
                     </div>
                 </div>
             </Container>

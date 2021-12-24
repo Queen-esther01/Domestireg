@@ -26,8 +26,8 @@ function Login({ open, onClose }) {
                         Login
                     </button>
                     <div className="d-flex justify-content-between">
-                        <Link to='#' className='remove-link-color text-decoration-none text-pink'>Lost your password?</Link>
-                        <Link to='/register' className='remove-link-color text-decoration-none text-pink'>Create an account</Link>
+                        <Link to='/forgot-password' className='remove-link-color text-decoration-none text-blue'>Lost your password?</Link>
+                        <Link to='/register' className='remove-link-color text-decoration-none text-blue'>Create an account</Link>
                     </div>
                 </Modal.Body>
             </Modal>

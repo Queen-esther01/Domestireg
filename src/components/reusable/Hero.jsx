@@ -1,12 +1,12 @@
 import React from 'react'
-import { Breadcrumb, Container } from 'react-bootstrap'
+import { Container } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
 import Icons from './Icons'
 
-function Hero({ breadcrumb , ...otherProps}) {
+function Hero({ breadcrumb , extraStyle}) {
     return (
         <>
-            <div className={`bg-light-pink py-5 px-3 hero-container ${ breadcrumb.current === 'Contact us' && 'contact-us-hero'}`}  {...otherProps}>
+            <div className={`bg-light-pink py-5 px-3 hero-container ${extraStyle}`}>
                 <Container fluid='lg'>
                     <h2 className='hero-heading'>{breadcrumb.current}</h2>
                     <div key={breadcrumb.current}>

@@ -15,7 +15,7 @@ function ContactUs() {
     return (
         <>
             <Header/>
-            <Hero breadcrumb={breadcrumbs} style={{ color: 'white'}} />
+            <Hero breadcrumb={breadcrumbs} extraStyle='contact-us-hero text-white' />
             <ContactDetails/>
             <Footer/>
         </>
