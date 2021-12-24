@@ -10,6 +10,8 @@ import ResetPassword from './auth/ResetPassword';
 import Cart from './pages/Cart';
 import MedicalBouquet from './pages/MedicalBouquet';
 import MedicalCheckDetails from './pages/MedicalCheckDetails';
+import BackgroundBouquet from './pages/BackgroundBouquet';
+import BackgroundChecks from './components/medical/BackgroundChecks';
 
 function App() {
   return (
@@ -24,6 +26,8 @@ function App() {
         <Route path="/cart" element={<Cart />} />
         <Route path="/medical-bouquet" element={<MedicalBouquet/>} />
         <Route path="/medical-bouquet/:id" element={<MedicalCheckDetails/>} />
+        <Route path="/background-bouquet" element={<BackgroundBouquet/>} />
+        <Route path="/background-bouquet/:id" element={<MedicalCheckDetails/>} />
       </Routes>
     </Router>
   );

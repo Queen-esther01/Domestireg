@@ -47,13 +47,6 @@ function MedicalAddons() {
                                                 <button className='button-primary'>Add to cart</button>
                                             </div>
                                         </div>
-                                        
-                                        
-                                        {/* <Divider styles={{ width: '150px' }}/>
-                                        <p onClick={()=>showMedicalCheckDetails(packages)} className='pointer mt-2 text-center font-bold'>
-                                            Service details
-                                            <Icons icon='chevrons-right'/>
-                                        </p> */}
                                     </Col>
                         })
                     }

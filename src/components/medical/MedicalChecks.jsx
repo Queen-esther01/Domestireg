@@ -1,11 +1,10 @@
 import React from 'react'
 import { Col, Container, Row } from 'react-bootstrap'
-import { Link, useNavigate } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 import Nanny from '../../assets/images/nanny.jpg'
 import Divider from '../reusable/Divider'
 import Icons from '../reusable/Icons'
 import Driver from '../../assets/images/driver.jpg'
-import Chef from '../../assets/images/chef.jpg'
 
 const medicalpackages = [
     {

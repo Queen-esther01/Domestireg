@@ -34,7 +34,7 @@ function ServiceBouquets() {
                             <div className='mt-3'>
                                 <h5>Background & Criminal Check</h5>
                                 <p className='mt-2'>
-                                    <Link to='#'>
+                                    <Link to='/background-bouquet'>
                                         Select option
                                         <Icons icon='chevrons-right'/>
                                     </Link>

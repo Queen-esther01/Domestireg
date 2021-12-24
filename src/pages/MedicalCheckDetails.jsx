@@ -5,6 +5,7 @@ import Divider from '../components/reusable/Divider'
 import Footer from '../components/reusable/Footer'
 import Header from '../components/reusable/Header'
 import Hero from '../components/reusable/Hero'
+import Background from '../assets/images/background-check.jpg'
 
 
 const breadcrumbs = {
@@ -28,7 +29,7 @@ function MedicalCheckDetails() {
                     <Row className='justify-content-md-evenly pt-5 mt-1'>
                         <Col xs={12} sm={6} md={6} lg={6}>
                             <div className='service-container mt-4'>
-                                <img src={serviceDetails.image} className='rounded-img service-details-image w-100 h-100 object-fit-cover ' alt={serviceDetails.title}/>
+                                <img src={ serviceDetails.image ? serviceDetails.image : Background } className='rounded-img service-details-image w-100 h-100 object-fit-cover ' alt={serviceDetails.title}/>
                             </div>
                         </Col>
                         {/* <Container>
@@ -41,11 +42,11 @@ function MedicalCheckDetails() {
                                 <h4 className=''>{serviceDetails.title}</h4>
                                 <h3 className='text-pink font-bold my-3' >&#8358;{serviceDetails.price}</h3>
                                 <p className="text-grey">{serviceDetails.description}</p>
-                                <h6>Tests included:</h6>
+                                <h6>{ serviceDetails.image ? 'Tests included:' : 'Checks included:' }</h6>
                                 <ul>
                                     {
                                         serviceDetails.tests.map((test, index) => {
-                                            return <li key={index} className='text-grey'>{test}, </li>
+                                            return <li key={index} className='text-grey'>{test} </li>
                                         })
                                     }
                                 </ul>
