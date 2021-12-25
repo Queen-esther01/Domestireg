@@ -9,26 +9,33 @@ import ForgotPassword from './auth/ForgotPassword';
 import ResetPassword from './auth/ResetPassword';
 import Cart from './pages/Cart';
 import MedicalBouquet from './pages/MedicalBouquet';
-import MedicalCheckDetails from './pages/MedicalCheckDetails';
+import SubBouquetDetails from './pages/SubBouquetDetails';
 import BackgroundBouquet from './pages/BackgroundBouquet';
-import BackgroundChecks from './components/medical/BackgroundChecks';
+import Verify from './auth/Verify';
+import ConfigureStore from './store/configureStore';
+import { Provider } from 'react-redux';
+
+const store = ConfigureStore()
 
 function App() {
   return (
     <Router>
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/about-us" element={<AboutUs />} />
-        <Route path="/contact-us" element={<ContactUs />} />
-        <Route path="/register" element={<Register />} />
-        <Route path="/forgot-password" element={<ForgotPassword />} />
-        <Route path="/reset-password" element={<ResetPassword />} />
-        <Route path="/cart" element={<Cart />} />
-        <Route path="/medical-bouquet" element={<MedicalBouquet/>} />
-        <Route path="/medical-bouquet/:id" element={<MedicalCheckDetails/>} />
-        <Route path="/background-bouquet" element={<BackgroundBouquet/>} />
-        <Route path="/background-bouquet/:id" element={<MedicalCheckDetails/>} />
-      </Routes>
+      <Provider store={store}>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/about-us" element={<AboutUs />} />
+          <Route path="/contact-us" element={<ContactUs />} />
+          <Route path="/register" element={<Register />} />
+          <Route path="/verify" element={<Verify />} />
+          <Route path="/forgot-password" element={<ForgotPassword />} />
+          <Route path="/reset-password" element={<ResetPassword />} />
+          <Route path="/cart" element={<Cart />} />
+          <Route path="/medical-bouquet" element={<MedicalBouquet/>} />
+          <Route path="/medical-bouquet/:id" element={<SubBouquetDetails/>} />
+          <Route path="/background-bouquet" element={<BackgroundBouquet/>} />
+          <Route path="/background-bouquet/:id" element={<SubBouquetDetails/>} />
+        </Routes>
+      </Provider>
     </Router>
   );
 }

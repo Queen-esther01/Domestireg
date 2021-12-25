@@ -1,0 +1,1 @@
+export const baseurl = 'https://dregstage.herokuapp.com/api/v1/'

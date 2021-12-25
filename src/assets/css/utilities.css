@@ -118,3 +118,6 @@
 .position-absolute{
     position: absolute;
 }
+.text-red{
+    color: red;
+}

@@ -1,7 +1,6 @@
 import React from 'react'
 import { Badge, Col, Container, Row } from 'react-bootstrap'
 import { useLocation } from 'react-router-dom'
-import Divider from '../components/reusable/Divider'
 import Footer from '../components/reusable/Footer'
 import Header from '../components/reusable/Header'
 import Hero from '../components/reusable/Hero'
@@ -14,7 +13,7 @@ const breadcrumbs = {
     current: 'Service details'
 }
 
-function MedicalCheckDetails() {
+function SubBouquetDetails() {
 
     const location = useLocation()
     console.log(location)
@@ -62,4 +61,4 @@ function MedicalCheckDetails() {
     )
 }
 
-export default MedicalCheckDetails
+export default SubBouquetDetails
