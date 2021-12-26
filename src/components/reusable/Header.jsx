@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Container, Nav, NavDropdown } from 'react-bootstrap';
+import { Badge, Container, Nav, NavDropdown } from 'react-bootstrap';
 import Logo from '../../assets/images/Domestireg.png'
 import Offcanvas from '../home/Offcanvas';
 import Icons from './Icons';
@@ -27,7 +27,7 @@ function Header() {
         setshowLoginModal(!showLoginModal)
     }
 
-    console.log(user)
+    //console.log(user)
 
     //console.log(cookies)
     const logout = () =>{
@@ -80,8 +80,9 @@ function Header() {
                                     </div>
                                 </Tippy>
                         }
-                        <Link to='/cart' className='remove-link-color'>
+                        <Link to='/cart' className='remove-link-color position-relative'>
                             <Icons icon='shopping-cart' size={45} className='header-icon pointer bg-light-pink' />
+                            <Badge bg="secondary" className='bg-pink rounded-circle position-absolute' style={{ right: '-5px', top: '-6px' }}>0</Badge>
                         </Link>
                     </div>
                 </div>

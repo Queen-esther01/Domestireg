@@ -14,7 +14,6 @@ const userSlice = createSlice({
         login: [],
         forgotPassword: [],
         resetPassword: [],
-        // logoutResponse: [],
         loading: false,
     },
     reducers: {
@@ -174,19 +173,7 @@ export const userResetPassword = (data) =>{
 }
 
 
-// export const logoutUser = () =>{
-//     return (dispatch) => {
-//         dispatch(
-//             API_REQUEST_BEGAN({
-//                 url: `${baseurl}logout`,
-//                 onStart: userAuthBegan.type,
-//                 onSuccess: logoutSucceeded.type,
-//                 onError: logoutFailed.type,
-//                 method: 'get'
-//             })
-//         )
-//     }
-// }
+
 
 export const { 
     userAuthBegan, 

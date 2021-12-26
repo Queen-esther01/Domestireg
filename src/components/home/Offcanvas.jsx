@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Nav, NavDropdown, Offcanvas } from 'react-bootstrap'
+import { Badge, Nav, NavDropdown, Offcanvas } from 'react-bootstrap'
 import { Link } from 'react-router-dom';
 import Icons from '../reusable/Icons';
 import { cookies } from '../../utils/getCookies';
@@ -54,7 +54,8 @@ function OffCanvas({ showSidebar, handleSidebar, toggleLogin }) {
                                         <NavDropdown.Item href="/cart">
                                             <div className="d-flex align-items-center ml-3">
                                                 <Icons icon='shopping-cart' size={15} />
-                                                &nbsp; &nbsp;Cart
+                                                &nbsp; &nbsp;Cart &nbsp;
+                                                <Badge bg="secondary" className='bg-pink'>0</Badge>
                                             </div>
                                         </NavDropdown.Item>
                                         <NavDropdown.Divider />

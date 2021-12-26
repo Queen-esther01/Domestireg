@@ -13,6 +13,7 @@ import toast from 'react-hot-toast';
 import { resetState, userForgotPassword, userResetPassword } from '../store/actions/authActions'
 import Icons from '../components/reusable/Icons'
 import { removeUserData } from '../utils/removeUserData'
+import Login from './Login'
 
 
 const breadcrumbs = {
@@ -22,7 +23,7 @@ const breadcrumbs = {
 }
 
 function ResetPassword() {
-
+    const [showLoginModal, setshowLoginModal] = useState(false)
     const [inputType, setinputType] = useState('password')
     const [confirmPasswordType, setconfirmPasswordType] = useState('password')
     const [confirmPassword, setconfirmPassword] = useState()
@@ -76,12 +77,17 @@ function ResetPassword() {
     // console.log(resetPassword)
     // console.log(location)
 
+    const handleLoginModal = () =>{
+        setshowLoginModal(!showLoginModal)
+    }
+
     useEffect(() => {
         if(resetPassword.code === 200){
             toast.success('your password has been reset successfully!')
             dispatch(resetState())
             removeUserData()
-            navigate('/')
+            handleLoginModal()
+            //navigate('/')
         }
         else if(forgotPassword.code === 200){
             toast.success('a new password reset code has been sent to your email!')
@@ -105,6 +111,7 @@ function ResetPassword() {
 
     return (
         <>
+            <Login open={showLoginModal} onClose={handleLoginModal}/>
             <Header/>
             <Hero breadcrumb={breadcrumbs} extraStyle='register-hero text-white'/>
             <Container fluid='lg'>
