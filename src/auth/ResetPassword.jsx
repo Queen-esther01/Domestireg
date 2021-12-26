@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { Container, Form } from 'react-bootstrap'
-import { Link, useNavigate } from 'react-router-dom'
+import { useNavigate, useLocation } from 'react-router-dom'
 import Footer from '../components/reusable/Footer'
 import Header from '../components/reusable/Header'
 import Hero from '../components/reusable/Hero'
@@ -10,8 +10,9 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from "yup";
 import Loader from '../components/reusable/Loader';
 import toast from 'react-hot-toast';
-import { resetState, userResetPassword } from '../store/actions/authActions'
+import { resetState, userForgotPassword, userResetPassword } from '../store/actions/authActions'
 import Icons from '../components/reusable/Icons'
+import { removeUserData } from '../utils/removeUserData'
 
 
 const breadcrumbs = {
@@ -46,6 +47,8 @@ function ResetPassword() {
 
     const navigate = useNavigate()
 
+    const location = useLocation()
+
     const schema = yup.object({
         password: yup.string().min(6).required()
     }).required();
@@ -56,6 +59,7 @@ function ResetPassword() {
 
     const onSubmit = data => {
         console.log(data);
+        data.email = location.state.email
         if(data.password !== confirmPassword) {
             setpasswordMismatch(true)
             return false
@@ -64,31 +68,40 @@ function ResetPassword() {
             setpasswordMismatch(false)
             dispatch(userResetPassword(data))
         }
-        // dispatch(userForgotPassword(data))
     }
 
     //GET RESET PASSWORD RESPONSE DATA
     const response = useSelector(state => state.user)
-    const { resetPassword, loading } = response
-    console.log(resetPassword)
+    const { resetPassword, forgotPassword, loading } = response
+    // console.log(resetPassword)
+    // console.log(location)
 
     useEffect(() => {
         if(resetPassword.code === 200){
-            toast.success('Password reset link has been sent to your email!')
+            toast.success('your password has been reset successfully!')
             dispatch(resetState())
+            removeUserData()
             navigate('/')
         }
-        // else if(resetPassword.code === 401){
-        //     toast.error('Your account has not been verified, please verify to continue.', {
-        //         id: 'verify',
-        //     })
-        //     dispatch(resetState())
-        //     navigate('/verify', {
-        //         state: { email: watch('email') },
-        //     })
-        // }
-    }, [resetPassword, watch ])
+        else if(forgotPassword.code === 200){
+            toast.success('a new password reset code has been sent to your email!')
+            dispatch(resetState())
+        }
+        else if(resetPassword.code === 401){
+            toast.error('Invalid verification code!', {
+                id: 'verify',
+            })
+            dispatch(resetState())
+        }
+    }, [resetPassword, forgotPassword, watch ])
 
+
+    const resendResetPasswordCode = () =>{
+        const data = {
+            email : location.state.email
+        }
+        dispatch(userForgotPassword(data))
+    }
 
     return (
         <>
@@ -98,9 +111,13 @@ function ResetPassword() {
                 <div className="register-form py-4">
                     <div className="mb-4">
                         <h5>Reset password</h5>
-                        <p className='text-grey mt-3'> Please enter your new password in the fields below</p>
+                        <p className='text-grey mt-3'> Please enter the code you received and your new password in the fields below</p>
                     </div>
                     <Form onSubmit={handleSubmit(onSubmit)}>
+                        <Form.Group className="mt-4" >
+                            <Form.Label>Code</Form.Label>
+                            <Form.Control {...register('token')} isInvalid={!!errors.token} type='text' placeholder="" className='' />
+                        </Form.Group>
                         <Form.Group className="mt-4 position-relative" >
                             <Form.Label>Password</Form.Label>
                             <Form.Control {...register('password')} isInvalid={!!errors.password} type={inputType} placeholder="" className='' />
@@ -130,7 +147,7 @@ function ResetPassword() {
                         </button>
                     </Form>
                     <div className="">
-                        Don't have an account? <Link to='/register' className='remove-link-color text-decoration-none text-blue'>Register</Link>
+                        Didn't get code or code expired? <span onClick={resendResetPasswordCode} className='pointer text-blue'>resend</span>
                     </div>
                 </div>
             </Container>

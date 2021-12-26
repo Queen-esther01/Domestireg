@@ -13,6 +13,7 @@ import Icons from '../components/reusable/Icons';
 
 
 function Login({ open, onClose }) {
+    
     const [inputType, setinputType] = useState('password')
 
     const dispatch = useDispatch()
@@ -41,7 +42,7 @@ function Login({ open, onClose }) {
     //GET LOGIN RESPONSE DATA
     const response = useSelector(state => state.user)
     const { login, loading } = response
-    console.log(login)
+    //console.log(login)
 
 
     useEffect(() => {
@@ -50,11 +51,12 @@ function Login({ open, onClose }) {
             toast.success('You have successfully logged in!')
 
             setTimeout(() => {
-                //localStorage.setItem('dreg', JSON.stringify(login.data.user))
-                cookie.save('dreg', login.data.token, {maxAge: 86400})
+                localStorage.setItem('dreg', JSON.stringify(login.user))
+                cookie.save('dreg', login.token, {maxAge: 86400})
                 dispatch(resetState())
                 onClose()
-                navigate('/', { replace: true })
+                window.location.reload(false)
+                // navigate('/', { replace: true })
             }, 1000)
         }
         else if(login.code === 400){
@@ -67,7 +69,9 @@ function Login({ open, onClose }) {
             })
         }
         else if(login.code === 401){
-            toast.error('Sorry, your login details are invalid.')
+            toast.error('Sorry, your login details are invalid.', {
+                id: 'login',
+            })
             dispatch(resetState())
         }
     }, [login, watch ])
@@ -94,7 +98,7 @@ function Login({ open, onClose }) {
                         </Form.Text>
                         <Form.Group className="mt-3 position-relative" >
                             <Form.Label>Password</Form.Label>
-                            <Form.Control {...register('password')} isInvalid={!!errors.password} type="password" placeholder="" className='' />
+                            <Form.Control {...register('password')} isInvalid={!!errors.password} type={inputType} placeholder="" className='' />
                             {
                                 <p onClick={togglePasswordVisibility} className='pointer position-absolute' style={{ right: 10, bottom: '-9px' }} >
                                     {inputType === 'password' ? <Icons icon='eye-off'/> : <Icons icon='eye'/>}

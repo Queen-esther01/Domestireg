@@ -1,14 +1,14 @@
 import React, { useEffect } from 'react'
 import { Container, Form } from 'react-bootstrap'
 import { useDispatch, useSelector } from 'react-redux'
-import { useLocation, useNavigate } from 'react-router-dom'
+import { useLocation, useNavigate, Navigate } from 'react-router-dom'
 import Footer from '../components/reusable/Footer'
 import Header from '../components/reusable/Header'
 import Hero from '../components/reusable/Hero'
 import { useForm } from "react-hook-form";
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from "yup";
-import { resetState, verifyUser } from '../store/actions/authActions'
+import { resendVerification, resetState, verifyUser } from '../store/actions/authActions'
 import toast from 'react-hot-toast'
 import cookie from 'react-cookies'
 import Loader from '../components/reusable/Loader'
@@ -29,7 +29,7 @@ function Verify() {
     const navigate = useNavigate()
 
     const schema = yup.object({
-        otp: yup.number().min(4).required()
+        otp: yup.string().min(4).required()
     }).required();
 
     const { register, handleSubmit, watch, formState:{ errors } } = useForm({
@@ -44,8 +44,18 @@ function Verify() {
 
     //GET VERIFICATION RESPONSE DATA
     const response = useSelector(state => state.user)
-    const { verification, error, loading } = response
+    const { verification, resendVerify, loading } = response
     console.log(verification)
+    console.log(resendVerify)
+
+
+    //RESEND VERIFICATION CODE
+    const resendCode = () =>{
+        const data = {
+            email: location.state.email
+        }
+        dispatch(resendVerification(data))
+    }
 
 
     useEffect(() => {
@@ -54,23 +64,27 @@ function Verify() {
             toast.success('Account verified!')
 
             setTimeout(() => {
-                localStorage.setItem('dreg', JSON.stringify(verification.data.user))
-                cookie.save('dreg', verification.data.token, {maxAge: 86400})
+                localStorage.setItem('dreg', JSON.stringify(verification.data))
+                cookie.save('dreg', verification.token, {maxAge: 86400})
                 dispatch(resetState())
                 navigate('/', { replace: true })
             }, 1000)
+        }
+        else if(resendVerify.code === 200){
+            toast.success('Otp resent successfully!')
+            dispatch(resetState())
         }
         else if(verification.code === 400){
             toast.error('Invalid verification code!', {
                 id: 'verify',
             })
             dispatch(resetState())
-        }
-    }, [verification, watch ])
+        } 
+    }, [verification, resendVerify, watch ])
 
 
 
-    if(!location.state.email) return null
+    if(location.state === null) return <Navigate to='/' />
     return (
         <>
             <Header/>
@@ -93,7 +107,7 @@ function Verify() {
                         </button>
                     </Form>
                     <div className="">
-                        Didn't get code? <span className='text-blue'>resend</span>
+                        Didn't get code? <span className='text-blue pointer' onClick={resendCode}>resend</span>
                     </div>
                 </div>
             </Container>

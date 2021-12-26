@@ -10,7 +10,7 @@ const userSlice = createSlice({
     initialState: {
         registration: [],
         verification: [],
-        // resendVerify: [],
+        resendVerify: [],
         login: [],
         forgotPassword: [],
         resetPassword: [],
@@ -39,11 +39,14 @@ const userSlice = createSlice({
             status.loading = false
             status.resendVerify = []
         },
-        // resendVerificationSucceeded: (status, action) =>{
-        //     status.verification = []
-        //     status.resendVerify = action.payload
-        //     status.loading = false
-        // },
+        resendVerificationSucceeded: (status, action) =>{
+            status.resendVerify = action.payload
+            status.loading = false
+        },
+        resendVerificationFailed: (status, action) =>{
+            status.resendVerify = action.payload
+            status.loading = false
+        },
         userLoginSucceeded: (status, action) =>{
             status.login = action.payload
             status.loading = false
@@ -68,17 +71,10 @@ const userSlice = createSlice({
             status.resetPassword = action.payload
             status.loading = false
         },
-        // resendVerificationFailed: (status, action) =>{
-        //     status.verification = []
-        //     status.resendVerify = action.payload
-        //     status.loading = false
-        // },
-        
-        
         resetState: ( status, action ) => {
             status.registration = []
             status.verification = []
-            // status.resendVerify = []
+            status.resendVerify = []
             status.login = []
             status.forgotPassword = []
             status.resetPassword = []
@@ -116,20 +112,20 @@ export const verifyUser = (verifyData) =>{
     }
 }
 
-// export const resendVerification = (email) =>{
-//     //return console.log(registerData.data)
-//     return (dispatch) => {
-//         dispatch(
-//             API_REQUEST_BEGAN({
-//                 url: `${baseurl}resend-token/${email}`,
-//                 onStart: userAuthBegan.type,
-//                 onSuccess: resendVerificationSucceeded.type,
-//                 onError: resendVerificationFailed.type,
-//                 method: 'get'
-//             })
-//         )
-//     }
-// }
+export const resendVerification = (email) =>{
+    return (dispatch) => {
+        dispatch(
+            API_REQUEST_BEGAN({
+                url: `${baseurl}user/resend`,
+                onStart: userAuthBegan.type,
+                onSuccess: resendVerificationSucceeded.type,
+                onError: resendVerificationFailed.type,
+                method: 'post',
+                data: email
+            })
+        )
+    }
+}
 
 export const loginUser = (loginData) =>{
     return (dispatch) => {
@@ -200,14 +196,12 @@ export const {
     userLoginFailed,
     userVerificationSucceeded,
     userVerificationFailed,
-    // resendVerificationSucceeded,
-    // resendVerificationFailed,
+    resendVerificationSucceeded,
+    resendVerificationFailed,
     userForgotPasswordSucceeded,
     userForgotPasswordFailed,
     userResetPasswordSucceeded,
     userResetPasswordFailed,
-    // logoutSucceeded,
-    // logoutFailed,
     resetState,
 } = userSlice.actions
 

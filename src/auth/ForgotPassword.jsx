@@ -44,7 +44,11 @@ function ForgotPassword() {
 
     useEffect(() => {
         if(forgotPassword.code === 200){
-            toast.success('Password reset link has been sent to your email!')
+            toast.success('Password reset code has been sent to your email!')
+            dispatch(resetState())
+            navigate('/reset-password', {
+                state: { email: watch('email') },
+            })
         }
         else if(forgotPassword.code === 401){
             toast.error('Your account has not been verified, please verify to continue.', {
@@ -65,7 +69,7 @@ function ForgotPassword() {
                 <div className="register-form py-4">
                     <div className="mb-4">
                         <h5>Forgot password</h5>
-                        <p className='text-grey mt-3'> Please enter your email address. You will receive a link to create a new password via email.</p>
+                        <p className='text-grey mt-3'> Please enter your email address. You will receive a code to create a new password.</p>
                     </div>
                     <Form onSubmit={handleSubmit(onSubmit)}>
                         <Form.Group className="mt-3" >
