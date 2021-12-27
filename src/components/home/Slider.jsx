@@ -2,6 +2,8 @@ import React from 'react'
 import Slider1 from '../../assets/images/slider01.jpg'
 import Slider2 from '../../assets/images/slider02.jpg'
 import Slider3 from '../../assets/images/slider03.jpg'
+import Slider4 from '../../assets/images/slider04.jpg'
+import Slider5 from '../../assets/images/slider05.jpg'
 import { Swiper, SwiperSlide } from 'swiper/react';
 import SwiperCore, { Pagination, Autoplay, EffectFade} from 'swiper';
 // swiper bundle styles
@@ -24,7 +26,7 @@ const sliders = [
         description: 'Welcome to Domestireg',
         heading: 'Quality checked, realtime results',
         button: 'Explore our services',
-        link: ''
+        link: '/subbouquet'
     },
     {
         image: Slider2,
@@ -38,8 +40,22 @@ const sliders = [
         description: 'Background checks',
         heading: 'Be sure before you hire',
         button: 'Get started',
+        link: '/background-bouquet'
+    },
+    {
+        image: Slider4,
+        description: 'Hire with confidence',
+        heading: 'Be confident we get it right every time!',
+        button: 'Get started',
         link: ''
-    }
+    },
+    {
+        image: Slider5,
+        description: 'Background checks',
+        heading: "Don't play Russian Roulette with your family's health and safety.",
+        button: 'Get started',
+        link: '/background-bouquet'
+    },
 ]
 function Slider() {
     return (

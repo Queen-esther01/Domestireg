@@ -121,3 +121,6 @@
 .text-red{
     color: red;
 }
+.hover-blue:hover{
+    color: var(--color-blue);
+}

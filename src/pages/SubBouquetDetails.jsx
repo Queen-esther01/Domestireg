@@ -9,16 +9,19 @@ import Background from '../assets/images/background-check.jpg'
 
 const breadcrumbs = {
     previous: 'Medical Bouquet',
-    previousLink: '/medical-bouquet',
+    previousLink: '/subbouquet',
     current: 'Service details'
 }
 
 function SubBouquetDetails() {
 
     const location = useLocation()
-    console.log(location)
+    //console.log(location)
 
     const serviceDetails = location.state.info
+
+    console.log(serviceDetails)
+    
 
     return (
         <>
@@ -28,7 +31,7 @@ function SubBouquetDetails() {
                     <Row className='justify-content-md-evenly pt-5 mt-1'>
                         <Col xs={12} sm={6} md={6} lg={6}>
                             <div className='service-container mt-4'>
-                                <img src={ serviceDetails.image ? serviceDetails.image : Background } className='rounded-img service-details-image w-100 h-100 object-fit-cover ' alt={serviceDetails.title}/>
+                                <img src={ Background } className='rounded-img service-details-image w-100 h-100 object-fit-cover ' alt={serviceDetails.title}/>
                             </div>
                         </Col>
                         {/* <Container>
@@ -38,13 +41,13 @@ function SubBouquetDetails() {
                         <Col xs={12} sm={6} md={5} lg={5} className=''>
                             <div className='my-4 service-container'>
                                 <Badge bg="info" className='mb-3 py-2'>Starts after payment</Badge>
-                                <h4 className=''>{serviceDetails.title}</h4>
-                                <h3 className='text-pink font-bold my-3' >&#8358;{serviceDetails.price}</h3>
-                                <p className="text-grey">{serviceDetails.description}</p>
-                                <h6>{ serviceDetails.image ? 'Tests included:' : 'Checks included:' }</h6>
+                                <h4 className=''>{serviceDetails.name}</h4>
+                                <h3 className='text-pink font-bold my-3' >&#8358;{serviceDetails.price.toLocaleString('en')}</h3>
+                                { serviceDetails.details && <p className="text-grey">{serviceDetails.details}</p> }
+                                <h6>Checks included:</h6>
                                 <ul>
                                     {
-                                        serviceDetails.tests.map((test, index) => {
+                                        serviceDetails.description.map((test, index) => {
                                             return <li key={index} className='text-grey'>{test} </li>
                                         })
                                     }

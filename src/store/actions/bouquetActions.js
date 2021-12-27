@@ -39,7 +39,7 @@ export const getBouquets = () =>{
     return (dispatch) => {
         dispatch(
             API_REQUEST_BEGAN({
-                url: `${baseurl}user/sign_up`,
+                url: `${baseurl}get_bouquet`,
                 onStart: bouquetRequestBegan.type,
                 onSuccess: getBouquetsSucceeded.type,
                 onError: getBouquetsSucceeded.type,
@@ -49,11 +49,11 @@ export const getBouquets = () =>{
     }
 }
 
-export const verifyUser = (id) =>{
+export const getSubBouquets = (id) =>{
     return (dispatch) => {
         dispatch(
             API_REQUEST_BEGAN({
-                url: `${baseurl}user/verify`,
+                url: `${baseurl}get_subbouquet/${id}`,
                 onStart: bouquetRequestBegan.type,
                 onSuccess: getSubBouquetsSucceeded.type,
                 onError: getSubBouquetsFailed.type,

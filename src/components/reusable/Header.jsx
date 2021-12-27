@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { Badge, Container, Nav, NavDropdown } from 'react-bootstrap';
 import Logo from '../../assets/images/Domestireg.png'
 import Offcanvas from '../home/Offcanvas';
@@ -7,13 +7,18 @@ import Tippy from '@tippyjs/react';
 import 'tippy.js/dist/tippy.css';
 import 'tippy.js/themes/light.css';
 import Login from '../../auth/Login';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { cookies } from '../../utils/getCookies';
-import { removeUserData } from '../../utils/removeUserData';
 import { user } from '../../utils/userInfo';
-import Logout from '../home/Logout';
+import Logout from '../../auth/Logout';
+import { getBouquets } from '../../store/actions/bouquetActions';
+import { useSelector, useDispatch } from 'react-redux';
 
 function Header() {
+
+    const navigate = useNavigate()
+    const dispatch = useDispatch()
+
     const [showSidebar, setshowSidebar] = useState(false)
     const [showLoginModal, setshowLoginModal] = useState(false)
     const [showLogoutModal, setshowLogoutModal] = useState(false)
@@ -30,14 +35,27 @@ function Header() {
     //console.log(user)
 
     //console.log(cookies)
-    const logout = () =>{
-        removeUserData()
-        window.location.reload(false)
-    }
 
     const handleLogoutModal = () =>{
         setshowLogoutModal(!showLogoutModal)
     }
+
+    useEffect(() => {
+        dispatch(getBouquets())
+    }, [dispatch])
+
+    const data = useSelector(state => state.bouquet)
+    const { bouquets } = data
+   
+    const showSubBouquets = (data) => {
+        //console.log(data)
+        navigate( `/subbouquet`, {
+            state: { data},
+            replace: false
+        })
+        window.location.reload(false)
+    }
+
 
 
     return (
@@ -55,8 +73,13 @@ function Header() {
                         <Nav.Link href="/">Home</Nav.Link>
                         <Nav.Link href="/about-us">About us</Nav.Link>
                         <NavDropdown title="Our services" id="navbarScrollingDropdown">
-                            <NavDropdown.Item href="/medical-bouquet">Medical checks</NavDropdown.Item>
-                            <NavDropdown.Item href="/background-bouquet">Background & security checks</NavDropdown.Item>
+                        {
+                            bouquets.data && bouquets.data.map(bouquet => {
+                                    return (
+                                        <NavDropdown.Item key={bouquet._id} onClick={()=>showSubBouquets(bouquet)} href='#'>{bouquet.name}</NavDropdown.Item>
+                                    )
+                                })
+                            }
                         </NavDropdown>
                         <Nav.Link href="/contact-us">Contact us</Nav.Link>
                     </Nav>

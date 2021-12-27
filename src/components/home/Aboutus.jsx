@@ -1,6 +1,7 @@
 import React from 'react'
 import { Col, Container, Row } from 'react-bootstrap'
 import Woman from '../../assets/images/smiling-woman.jpg'
+import Fingerprint from '../../assets/images/fingerprint.png'
 import Bonike from '../../assets/images/founder.png'
 
 function Aboutus() {
@@ -10,7 +11,7 @@ function Aboutus() {
                 <Row className='my-5 align-items-center'>
                     <Col xs={12} sm={12} md={6} lg={6}>
                         <div className='about-us-image-container mx-auto'>
-                            <img src={Woman} className='w-100 h-100 object-fit-cover object-position-top' alt="smiling-lady" />
+                            <img src={Fingerprint} className='w-100 h-100 object-fit-cover object-position-top' alt="smiling-lady" />
                         </div>
                     </Col>
                     <Col xs={12} sm={12} md={6} lg={6}>
@@ -24,7 +25,7 @@ function Aboutus() {
                                     <img src={Bonike} className='w-100 h-100 rounded-circle object-fit-cover object-position-top' alt="Bonike Thomas-Ojo" />
                                 </div>
                                 <div className='founder-details mt-4 ms-3'>
-                                    <h5>Bonike Thomas-Ojo</h5>
+                                    <h5>'Bonike Thomas-Ojo</h5>
                                     <p>Founder - <span> Domestireg </span> </p>
                                 </div>
                             </div>

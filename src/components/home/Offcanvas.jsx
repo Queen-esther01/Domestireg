@@ -1,21 +1,40 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Badge, Nav, NavDropdown, Offcanvas } from 'react-bootstrap'
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import Icons from '../reusable/Icons';
 import { cookies } from '../../utils/getCookies';
 import {user} from '../../utils/userInfo'
-import Logout from './Logout';
+import Logout from '../../auth/Logout';
+import { useDispatch, useSelector } from 'react-redux';
+import { getBouquets } from '../../store/actions/bouquetActions';
 
 function OffCanvas({ showSidebar, handleSidebar, toggleLogin }) {
     
     const [showLogoutModal, setshowLogoutModal] = useState(false)
     
+    const navigate = useNavigate()
+    const dispatch = useDispatch()
     //console.log(user)
 
     const handleLogoutModal = () =>{
         setshowLogoutModal(!showLogoutModal)
     }
+
+    useEffect(() => {
+        dispatch(getBouquets())
+    }, [dispatch])
+
+    const data = useSelector(state => state.bouquet)
+    const { bouquets } = data
    
+    const showSubBouquets = (data) => {
+        console.log(data)
+        navigate( `/subbouquet`, {
+            state: { data},
+            replace: false
+        })
+        window.location.reload(false)
+    }
     
     return (
         <>
@@ -30,8 +49,15 @@ function OffCanvas({ showSidebar, handleSidebar, toggleLogin }) {
                         <Nav.Link href="/">Home</Nav.Link>
                         <Nav.Link href="/about-us">About us</Nav.Link>
                         <NavDropdown title="Our services" id="navbarScrollingDropdown">
-                            <NavDropdown.Item href="/medical-bouquet">Medical checks</NavDropdown.Item>
-                            <NavDropdown.Item href="/background-bouquet">Background & security checks</NavDropdown.Item>
+                            {
+                                bouquets.data && bouquets.data.map(bouquet => {
+                                    return (
+                                        <NavDropdown.Item key={bouquet._id} onClick={()=>showSubBouquets(bouquet)} href='#'>{bouquet.name}</NavDropdown.Item>
+                                    )
+                                })
+                            }
+                            {/* <NavDropdown.Item href="/subbouquet">Medical checks</NavDropdown.Item>
+                            <NavDropdown.Item href="/background-bouquet">Background & security checks</NavDropdown.Item> */}
                         </NavDropdown>
                         <Nav.Link href="/contact-us">Contact us</Nav.Link>
                         {

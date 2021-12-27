@@ -25,7 +25,7 @@ function OurStory() {
                                     <img src={Bonike} className='w-100 h-100 rounded-circle object-fit-cover object-position-top' alt="Bonike Thomas-Ojo" />
                                 </div>
                                 <div className='founder-details mt-4 ms-3'>
-                                    <h5>Bonike Thomas-Ojo</h5>
+                                    <h5>'Bonike Thomas-Ojo</h5>
                                     <p>Founder - <span> Domestireg </span> </p>
                                 </div>
                             </div>

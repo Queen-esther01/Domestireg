@@ -44,7 +44,7 @@ export const getCartItems = () =>{
     return (dispatch) => {
         dispatch(
             API_REQUEST_BEGAN({
-                url: `${baseurl}user/sign_up`,
+                url: `${baseurl}user/get_cart`,
                 onStart: cartRequestBegan.type,
                 onSuccess: getCartItemsSucceeded.type,
                 onError: getCartItemsFailed.type,

@@ -20,7 +20,7 @@ function Footer() {
                                 <Icons icon='headphones' className='text-pink' size={50} />
                                 <div className='contact-details'>
                                     <span>Available 24/7</span>
-                                    <h5 className='text-pink mt-1'>(434) 546-4356</h5>
+                                    <h5 className='text-pink mt-1'>+234 818 838 6357</h5>
                                 </div>
                             </div>
                         </Col>

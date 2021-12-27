@@ -1,11 +1,20 @@
 import React from 'react'
+import { useEffect } from 'react'
 import { Col, Container, Row, Table } from 'react-bootstrap'
+import { useDispatch } from 'react-redux'
 import { Link } from 'react-router-dom'
 import EmptyCart from '../../assets/images/empty-cart.png'
+import { getCartItems } from '../../store/actions/cartActions'
 import Divider from '../reusable/Divider'
 import Icons from '../reusable/Icons'
 
 function CartDetails() {
+    const dispatch = useDispatch()
+
+    useEffect(() => {
+        dispatch(getCartItems())
+    }, [dispatch])
+
     return (
         <>
             <Container fluid='lg'>

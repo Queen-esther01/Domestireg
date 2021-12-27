@@ -8,9 +8,8 @@ import Register from './auth/Register';
 import ForgotPassword from './auth/ForgotPassword';
 import ResetPassword from './auth/ResetPassword';
 import Cart from './pages/Cart';
-import MedicalBouquet from './pages/MedicalBouquet';
+import SubBouquets from './pages/SubBouquets';
 import SubBouquetDetails from './pages/SubBouquetDetails';
-import BackgroundBouquet from './pages/BackgroundBouquet';
 import Verify from './auth/Verify';
 import ConfigureStore from './store/configureStore';
 import { Provider } from 'react-redux';
@@ -30,10 +29,8 @@ function App() {
           <Route path="/forgot-password" element={<ForgotPassword />} />
           <Route path="/reset-password" element={<ResetPassword />} />
           <Route path="/cart" element={<Cart />} />
-          <Route path="/medical-bouquet" element={<MedicalBouquet/>} />
-          <Route path="/medical-bouquet/:id" element={<SubBouquetDetails/>} />
-          <Route path="/background-bouquet" element={<BackgroundBouquet/>} />
-          <Route path="/background-bouquet/:id" element={<SubBouquetDetails/>} />
+          <Route path="/subbouquet" element={<SubBouquets/>} />
+          <Route path="/subbouquet/:id" element={<SubBouquetDetails/>} />
         </Routes>
       </Provider>
     </Router>

@@ -1,6 +1,7 @@
 import React from 'react'
 import { Col, Container, Row } from 'react-bootstrap'
 import Woman from '../../assets/images/woman-in-office.jpg'
+import Balloons from '../../assets/images/balloons.png'
 
 function Choice() {
     return (
@@ -17,7 +18,7 @@ function Choice() {
                     </Col>
                     <Col xs={12} sm={12} md={6} lg={6}>
                         <div className='about-us-image-container mx-auto'>
-                            <img src={Woman} className='w-100 h-100 object-fit-cover object-position-center' alt="smiling-lady" />
+                            <img src={Balloons} className='w-100 h-100 object-fit-cover object-position-center' alt="smiling-lady" />
                         </div>
                     </Col>
                 </Row>
