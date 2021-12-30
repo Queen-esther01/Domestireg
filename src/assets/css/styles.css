@@ -91,9 +91,9 @@ h1,h2,h3,h4,h5,h6{
     }
     .slider-description{
         top: 30%;
-        left: -49%;
+        left: -37%;
         text-align: left !important;
-        max-width: 400px;
+        max-width: 550px;
         margin: 0 auto;
     }
     .slider-tagline{
