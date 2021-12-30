@@ -16,10 +16,12 @@ SwiperCore.use([Autoplay, EffectFade, EffectCards, Pagination, EffectCoverflow, 
 
 const testimonials = [
     {
+        id: 1,
         name: 'Johnson Adams',
         testimonial: 'Always thought it was a good venture for a person that had the passion, drive and tenacity to make this verry much needed app a workable solution to this vacum in our society.'
     },
     {
+        id: 2,
         name: 'Funsho Adebayo',
         testimonial: 'This tool should also work closely with existing law enforcement agencies to quickly deceminate information to them and aide in resolving petty crimes before they escalate to more dangerous or life threatening situations.'
     }
@@ -41,7 +43,7 @@ function Testimonial() {
                     >
                         {
                             testimonials.map((data, i) => {
-                                return <Row key={data.name} className='justify-content-md-center'>
+                                return <Row key={i} className='justify-content-md-center'>
                                             <Col xs={12}>
                                                 <SwiperSlide className='swiper-slide-testimonial'>
                                                     <div className='testimonial-content'>
