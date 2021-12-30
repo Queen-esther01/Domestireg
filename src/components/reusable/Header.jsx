@@ -104,7 +104,7 @@ function Header() {
                                     </div>
                                 } arrow={false} theme='light' interactive={true} trigger='mouseenter' >
                                     <div>
-                                        <Icons icon='user' size={45} className='header-icon me-2 pointer hide-on-mobile bg-light-blue' />
+                                        <Icons icon='user' size={45} className='header-icon me-2 pointer hide-on-mobile bg-light-blue mt-2' />
                                     </div>
                                 </Tippy>
                         }
