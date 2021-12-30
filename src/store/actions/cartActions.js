@@ -42,17 +42,18 @@ const cartSlice = createSlice({
             status.fetchCartLoading = false
         },
         addItemToCartSucceeded: (status, action) =>{
-            if(action.payload.data && action.payload.data[0].subbouquet.name === 'Medical Add-ons'){
+            if(action.payload.data && action.payload.data[0].subbouquet.description[0] === 'Medical Add-ons'){
+                status.cartItems.push(action.payload.data[0])
                 status.addonsToCartSucceeded = action.payload
             }
-            else if(action.payload.error === true && action.payload.data && action.payload.data[0].subbouquet.name === 'Medical Add-ons'){
+            else if(action.payload.error === true && action.payload.data && action.payload.data[0].subbouquet.description[0] === 'Medical Add-ons'){
                 status.addonsToCartFailed = action.payload
             }
             if(action.payload.error === true && action.payload.code === 400){
                 status.addToCartFailed = action.payload
                 //status.addToCartSucceeded = action.payload
             }
-            else if(action.payload.error === false && action.payload.data && action.payload.data[0].subbouquet.name !== 'Medical Add-ons'){
+            else if(action.payload.error === false && action.payload.data && action.payload.data[0].subbouquet.description[0] !== 'Medical Add-ons'){
                 status.cartItems.push(action.payload.data[0])
                 status.addToCartSucceeded = action.payload
             }
@@ -65,8 +66,8 @@ const cartSlice = createSlice({
             status.addToCartLoading = false
         },
         deleteItemFromCartSucceeded: (status, action) =>{
-            if(action.payload.data[0].subbouquet.name === 'Medical Add-ons'){
-                status.cartItems = status.cartItems.filter(item => item.subbouquet.description !== action.payload.data[0].subbouquet.description[0])
+            if(action.payload.data[0].subbouquet.description[0] === 'Medical Add-ons'){
+                status.cartItems = status.cartItems.filter(item => item.subbouquet.name !== action.payload.data[0].subbouquet.name)
             }
             else{
                 status.cartItems = status.cartItems.filter(item => item.subbouquet.name !== action.payload.data[0].subbouquet.name)

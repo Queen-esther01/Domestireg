@@ -87,6 +87,7 @@ function Header() {
                             }
                         </NavDropdown>
                         <Nav.Link href="/contact-us">Contact us</Nav.Link>
+                        <Nav.Link href="/orders">Orders</Nav.Link>
                     </Nav>
                     <div className='d-flex justify-content-between'>
                         {

@@ -44,9 +44,9 @@ function SubBouquets() {
             dispatch(getSubBouquets(id))
     }, [dispatch, id])
 
-    const subBouquetListData = subBouquets.data && subBouquets.data.filter(subBouquet => subBouquet.name !== 'Medical Add-ons')
-
-    const medicalAddons = subBouquets.data && subBouquets.data.filter(subBouquet => subBouquet.name === 'Medical Add-ons')
+    const subBouquetListData = subBouquets.data && subBouquets.data.filter(subBouquet => (subBouquet.description[0] !== 'Medical Add-ons') && (subBouquet.description[0] !== 'Medical Add-ons '))
+    //console.log(subBouquetListData)
+    const medicalAddons = subBouquets.data && subBouquets.data.filter(subBouquet => subBouquet.description[0] === 'Medical Add-ons')
     //console.log(location.state.data )
     if(location.state === null) return <Navigate to='/' />
     return (

@@ -13,6 +13,7 @@ import { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { createOrder, resetState, uploadImage } from '../store/actions/orderActions'
 import toast from 'react-hot-toast'
+import { redirectUrl } from '../utils/redirectUrl'
 
 
 const breadcrumbs = {
@@ -61,6 +62,7 @@ function DomesticEmployeeForm() {
                     state: {
                         data: data,
                         cart_id : location.state.id[0],
+                        amount: location.state.amount
                     }
                 })
             }
@@ -73,6 +75,8 @@ function DomesticEmployeeForm() {
             data.image = employeeImage
             const submitData = {
                 cart_id : location.state.id[0],
+                amount: location.state.amount,
+                redirect_url: redirectUrl,
                 domestic : data
             }
             dispatch(createOrder(submitData))
@@ -83,7 +87,7 @@ function DomesticEmployeeForm() {
     //console.log(location.state)
 
     const checks = location.state && location.state.cart
-
+    console.log(location)
     
     const onUploadImage = () =>{
 
@@ -126,7 +130,7 @@ function DomesticEmployeeForm() {
             toast.success('Your order has been created successfully')
             dispatch(resetState())
             setTimeout(() => {
-                navigate('/orders')
+                window.open(orderSucceeded.data.checkout)
             }, 2000);
         }
         else if(orderFailed.status_code === 400){

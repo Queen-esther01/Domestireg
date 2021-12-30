@@ -12,6 +12,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import Loader from '../components/reusable/Loader'
 import { createOrder, resetState } from '../store/actions/orderActions';
 import toast from 'react-hot-toast';
+import { redirectUrl } from '../utils/redirectUrl';
 
 const breadcrumbs = {
     previous: 'Employee Info',
@@ -62,9 +63,12 @@ function AdditionalEmployeeForm() {
         console.log(allData)
         const submitData = {
             cart_id : location.state.cart_id,
+            amount: location.state.amount,
+            redirect_url: redirectUrl,
             domestic : allData
         }
         dispatch(createOrder(submitData))
+        console.log(submitData)
     }
 
     const orderResponse = useSelector(state => state.order)
@@ -75,10 +79,10 @@ function AdditionalEmployeeForm() {
             toast.success('Your order has been created successfully')
             dispatch(resetState())
             setTimeout(() => {
-                navigate('/orders')
+                window.open(orderSucceeded.data.checkout)
             }, 2000);
         }
-        else if(orderFailed.status_code === 400){
+        else if(orderFailed.status_code === 400 || orderSucceeded.error === true){
             toast.error('Your order failed')
             dispatch(resetState())
         }
@@ -230,7 +234,6 @@ function AdditionalEmployeeForm() {
                         <Form.Text className="text-red mb-3">
                             {errors.reference_address?.message}
                         </Form.Text>
-                        <Divider styles={{ width: '100%', margin: '30px 0 ' }} />
                         <button className='my-3 border-0 w-100 rounded bg-pink text-white py-3'>
                             { loading ? <Loader/> : 'Submit' }
                         </button>

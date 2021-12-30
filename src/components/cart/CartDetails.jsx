@@ -53,7 +53,8 @@ function CartDetails() {
             {
                 state: { 
                     cart: bouquetsInCart,
-                    id: cartID 
+                    id: cartID,
+                    amount: cartTotal
                 },
                 replace: false
             },

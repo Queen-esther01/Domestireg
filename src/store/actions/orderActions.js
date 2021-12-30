@@ -12,8 +12,6 @@ const orderSlice = createSlice({
         orderSucceeded: [],
         orderFailed: [],
         uploadSucceeded: [],
-        payment: [],
-        verifyPayment: [],
         loading: false,
         uploadLoading: false,
         paymentLoading: false
@@ -52,28 +50,10 @@ const orderSlice = createSlice({
             status.orders = action.payload.data
             status.loading = false
         },
-        makePaymentSucceeded: (status, action) =>{
-            status.payment = action.payload
-            status.paymentLoading = false
-        },
-        makePaymentFailed: (status, action) =>{
-            status.payment = action.payload
-            status.paymentLoading = false
-        },
-        verifyPaymentSucceeded: (status, action) =>{
-            status.verifyPayment = action.payload
-            status.loading = false
-        },
-        verifyPaymentFailed: (status, action) =>{
-            status.verifyPayment = action.payload
-            status.loading = false
-        },
         resetState: ( status, action ) => {
             status.uploadSucceeded = []
             status.orderSucceeded = []
             status.orderFailed = []
-            status.verifyPayment = []
-            status.payment = []
         }
     }
 })
@@ -123,34 +103,6 @@ export const getOrders = () =>{
     }
 }
 
-export const makePayment = () =>{
-    return (dispatch) => {
-        dispatch(
-            API_REQUEST_BEGAN({
-                url: `${baseurl}user/get_orders`,
-                onStart: paymentBegan.type,
-                onSuccess: makePaymentSucceeded.type,
-                onError: makePaymentFailed.type,
-                method: 'get',
-            })
-        )
-    }
-}
-
-export const verifyPayment = () =>{
-    return (dispatch) => {
-        dispatch(
-            API_REQUEST_BEGAN({
-                url: `${baseurl}user/get_orders`,
-                onStart: orderRequestBegan.type,
-                onSuccess: verifyPaymentSucceeded.type,
-                onError: verifyPaymentFailed.type,
-                method: 'post',
-            })
-        )
-    }
-}
-
 
 
 
@@ -166,10 +118,6 @@ export const {
     createOrdersFailed,
     getOrdersSucceeded,
     getOrdersFailed,
-    makePaymentSucceeded,
-    makePaymentFailed,
-    verifyPaymentSucceeded,
-    verifyPaymentFailed,
     resetState
 } = orderSlice.actions
 

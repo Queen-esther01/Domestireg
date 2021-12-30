@@ -17,6 +17,8 @@ function MedicalAddons({ medicalAddons }) {
 
     const token = cookie.load('dreg')
 
+    console.log(medicalAddons)
+
     const addServiceToCart = (service) => {
         const data = {
             cartItems: {
@@ -41,7 +43,7 @@ function MedicalAddons({ medicalAddons }) {
     useEffect(() => {
         if(addonsToCartSucceeded.error === false){
 
-            toast.success(`${addonsToCartSucceeded.data[0].subbouquet.description[0]} has been added to cart.`, {
+            toast.success(`${addonsToCartSucceeded.data[0].subbouquet.name} has been added to cart.`, {
                 id: 'addon-cart-success'
             })
 
@@ -70,7 +72,7 @@ function MedicalAddons({ medicalAddons }) {
                             return  <Col key={addons._id} xs={12} sm={6} md={4} className=''>
                                         <div className="text-center rounded-img my-3 mx-2 py-5 shadow-lg">
                                             <div className="text-center my-3">
-                                                <p>{addons.description[0]}</p>
+                                                <p>{addons.name}</p>
                                                 <h5 className='text-pink my-3'>&#8358;{addons.price.toLocaleString('en')}</h5>
                                             </div>
                                             <div className="m-auto d-block">
