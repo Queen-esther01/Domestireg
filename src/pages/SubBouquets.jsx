@@ -52,7 +52,8 @@ function SubBouquets() {
     return (
         <>
             <Header/>
-            <Hero breadcrumb={data.name === 'Medical Check' ? medicalbreadcrumbs : backgroundbreadcrumbs } extraStyle='medical-hero text-white' />
+            { data.name === 'Medical Check' && <Hero breadcrumb={ medicalbreadcrumbs } extraStyle='medical-hero text-white' /> }
+            { data.name !== 'Medical Check' && <Hero breadcrumb={backgroundbreadcrumbs } extraStyle='background-hero text-white' /> }
             <SubBouquetList subBouquetName={data.name} subBouquetList={subBouquetListData}/>
             { data.name === 'Medical Check' && <MedicalAddons medicalAddons={medicalAddons}/> }
             <Footer/>

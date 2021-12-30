@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react'
-import { Container, Form } from 'react-bootstrap'
+import { Alert, Container, Form } from 'react-bootstrap'
 import Footer from '../components/reusable/Footer'
 import Header from '../components/reusable/Header'
 import Hero from '../components/reusable/Hero'
@@ -23,7 +23,6 @@ const breadcrumbs = {
 
 
 function DomesticEmployeeForm() {
-    const [formData, setformData] = useState()
     const [employeeImage, setemployeeImage] = useState()
 
     const location = useLocation()
@@ -56,11 +55,22 @@ function DomesticEmployeeForm() {
     const onSubmit = (data) =>{
         if(checks.includes('Background & Criminal Check')){
             data.image = employeeImage
-            setformData(data)
+            //console.log(data)
+            if(Object.keys(errors).length === 0){
+                navigate('/checkoutform/additionalinfo', {
+                    state: {
+                        data: data,
+                        cart_id : location.state.id[0],
+                    }
+                })
+            }
+            else{
+                //console.log('there are errors')
+                return false
+            }
         }
         else{
             data.image = employeeImage
-            //data.image = 'test'
             const submitData = {
                 cart_id : location.state.id[0],
                 domestic : data
@@ -70,24 +80,9 @@ function DomesticEmployeeForm() {
         }
     }
 
-    console.log(employeeImage)
+    //console.log(location.state)
 
-
-    const checks = location.state.cart
-    console.log(checks)
-
-    const openExtraForm = () =>{
-        console.log(errors)
-        if(Object.keys(errors).length === 0){
-            navigate('/checkoutform/additionalinfo', {
-                state: formData
-            })
-        }
-        else{
-            console.log('there are errors')
-            return false
-        }
-    }
+    const checks = location.state && location.state.cart
 
     
     const onUploadImage = () =>{
@@ -98,21 +93,19 @@ function DomesticEmployeeForm() {
 
         if(image.length !== 0){
             formData.append('avatar', image[0])
-            // for(let [name, value] of formData) {
-            //     console.log(`${name} = ${value}`);
-            // }
-            console.log('Image has been uploaded successfully')
             dispatch(uploadImage(formData))
         }
         else{
-            console.log('Image is empty')
+            toast.error('Please upload an image')
         }
-        console.log(watch('image'))
     }
 
     const imageUploadResponse = useSelector(state => state.order)
-    const { orderSucceeded, uploadSucceeded, uploadLoading, loading } = imageUploadResponse
+    const { orderSucceeded, orderFailed, uploadSucceeded, uploadLoading, loading } = imageUploadResponse
+    console.log(orderFailed)
+    console.log(orderSucceeded)
 
+    //DISPLAY TOAST IF IMAGE UPLOADED SUCCESSFULLY
     console.log(uploadSucceeded)
     useEffect(() => {
         if(uploadSucceeded.code === 200){
@@ -124,22 +117,27 @@ function DomesticEmployeeForm() {
             toast.error('Image upload failed')
             dispatch(resetState())
         }
-    }, [uploadSucceeded])
+    }, [uploadSucceeded, dispatch])
 
+
+    //DISPLAY TOAST IF ORDER CREATION FAILS OR SUCCEEDS
     useEffect(() => {
         if(orderSucceeded.error === false){
             toast.success('Your order has been created successfully')
             dispatch(resetState())
-            Navigate('/orders')
+            setTimeout(() => {
+                navigate('/orders')
+            }, 2000);
         }
-        else if(uploadSucceeded.error === true){
+        else if(orderFailed.status_code === 400){
             toast.error('Your order failed')
             dispatch(resetState())
         }
-    }, [orderSucceeded, dispatch])
+    }, [orderSucceeded, orderFailed,  dispatch, navigate])
 
 
 
+    if(location.state === null) return <Navigate to='/cart' />
     return (
         <>
             <Header/>
@@ -147,6 +145,10 @@ function DomesticEmployeeForm() {
             
             <Container fluid='lg'>
                 <div className="register-form py-4">
+                    {
+                        checks.includes('Background & Criminal Check')
+                        && <Alert variant='info'>Please ensure you complete this form before moving on to the next </Alert>
+                    }
                     <div className="mb-4">
                         <h5>Employee Information</h5>
                         <p className='text-grey mt-3'>Please enter the information of the employee you would like to perform a check for.</p>
@@ -284,7 +286,7 @@ function DomesticEmployeeForm() {
                         <Form.Group className="mt-3" >
                             <Form.Check 
                                 {...register('staff_copy')} 
-                                label='Would you like the vetted staff member to receive a copy as well?'
+                                label='I would like the vetted staff member to receive a copy as well'
                                 name='staff_copy'
                                 isInvalid={!!errors.staff_copy}
                             />
@@ -294,10 +296,10 @@ function DomesticEmployeeForm() {
                         </Form.Text>
                         {
                             checks.includes('Background & Criminal Check')
-                            ?   <button onClick={openExtraForm} className='my-3 border-0 w-100 rounded bg-pink text-white py-3'>
+                            ?   <button className='my-3 border-0 w-100 rounded bg-pink text-white py-3'>
                                     Continue to next step
                                 </button>
-                            :   <button className='my-3 border-0 w-100 rounded bg-pink text-white py-3'>
+                            :   <button type={'submit'} className='my-3 border-0 w-100 rounded bg-pink text-white py-3'>
                                     { loading ? <Loader/> : 'Submit' }
                                 </button>
                         }

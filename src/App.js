@@ -16,6 +16,7 @@ import { Provider } from 'react-redux';
 import DomesticEmployeeForm from './pages/DomesticEmployeeForm';
 import AdditionalEmployeeForm from './pages/AdditionalEmployeeForm';
 import Order from './pages/Order';
+import TransactionConfirmation from './pages/TransactionConfirmation';
 
 const store = ConfigureStore()
 
@@ -37,6 +38,7 @@ function App() {
           <Route path="/checkoutform" element={<DomesticEmployeeForm/>} />
           <Route path="/checkoutform/additionalinfo" element={<AdditionalEmployeeForm/>} />
           <Route path="/orders" element={<Order/>} />
+          <Route path="/paymentconfirmation" element={<TransactionConfirmation/>} />
         </Routes>
       </Provider>
     </Router>

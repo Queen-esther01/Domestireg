@@ -10,9 +10,13 @@ const orderSlice = createSlice({
     initialState: {
         orders: [],
         orderSucceeded: [],
+        orderFailed: [],
         uploadSucceeded: [],
+        payment: [],
+        verifyPayment: [],
         loading: false,
         uploadLoading: false,
+        paymentLoading: false
     },
     reducers: {
         orderRequestBegan: (status) =>{
@@ -20,6 +24,9 @@ const orderSlice = createSlice({
         },
         uploadImageBegan: (status) =>{
             status.uploadLoading = true
+        },
+        paymentBegan: (status) =>{
+            status.paymentLoading = true
         },
         uploadImageSucceeded: (status, action) =>{
             status.uploadSucceeded = action.payload
@@ -31,11 +38,10 @@ const orderSlice = createSlice({
         },
         createOrdersSucceeded: (status, action) =>{
             status.orderSucceeded = action.payload
-            status.orders = action.payload.data
             status.loading = false
         },
         createOrdersFailed: (status, action) =>{
-            status.orderSucceeded = action.payload.data
+            status.orderFailed = action.payload
             status.loading = false
         },
         getOrdersSucceeded: (status, action) =>{
@@ -46,9 +52,28 @@ const orderSlice = createSlice({
             status.orders = action.payload.data
             status.loading = false
         },
+        makePaymentSucceeded: (status, action) =>{
+            status.payment = action.payload
+            status.paymentLoading = false
+        },
+        makePaymentFailed: (status, action) =>{
+            status.payment = action.payload
+            status.paymentLoading = false
+        },
+        verifyPaymentSucceeded: (status, action) =>{
+            status.verifyPayment = action.payload
+            status.loading = false
+        },
+        verifyPaymentFailed: (status, action) =>{
+            status.verifyPayment = action.payload
+            status.loading = false
+        },
         resetState: ( status, action ) => {
             status.uploadSucceeded = []
             status.orderSucceeded = []
+            status.orderFailed = []
+            status.verifyPayment = []
+            status.payment = []
         }
     }
 })
@@ -98,6 +123,34 @@ export const getOrders = () =>{
     }
 }
 
+export const makePayment = () =>{
+    return (dispatch) => {
+        dispatch(
+            API_REQUEST_BEGAN({
+                url: `${baseurl}user/get_orders`,
+                onStart: paymentBegan.type,
+                onSuccess: makePaymentSucceeded.type,
+                onError: makePaymentFailed.type,
+                method: 'get',
+            })
+        )
+    }
+}
+
+export const verifyPayment = () =>{
+    return (dispatch) => {
+        dispatch(
+            API_REQUEST_BEGAN({
+                url: `${baseurl}user/get_orders`,
+                onStart: orderRequestBegan.type,
+                onSuccess: verifyPaymentSucceeded.type,
+                onError: verifyPaymentFailed.type,
+                method: 'post',
+            })
+        )
+    }
+}
+
 
 
 
@@ -106,12 +159,17 @@ export const getOrders = () =>{
 export const { 
     orderRequestBegan,
     uploadImageBegan,
+    paymentBegan,
     uploadImageSucceeded,
     uploadImageFailed,
     createOrdersSucceeded,
     createOrdersFailed,
     getOrdersSucceeded,
     getOrdersFailed,
+    makePaymentSucceeded,
+    makePaymentFailed,
+    verifyPaymentSucceeded,
+    verifyPaymentFailed,
     resetState
 } = orderSlice.actions
 

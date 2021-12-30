@@ -20,7 +20,7 @@ function Order() {
     const dispatch = useDispatch()
 
     const order = useSelector(state => state.order)
-    const { orders } = order
+    const { orders, loading } = order
     console.log(orders)
 
     useEffect(() => {
@@ -31,7 +31,7 @@ function Order() {
         <>
             <Header/>
             <Hero breadcrumb={breadcrumbs} extraStyle='cart-hero text-white'/>
-            <OrderDetails orders={orders}/>
+            <OrderDetails orders={orders} loading={loading}/>
             <Footer/>
         </>
     )

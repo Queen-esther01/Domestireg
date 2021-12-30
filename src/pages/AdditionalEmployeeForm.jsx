@@ -1,6 +1,6 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { Container, Form } from 'react-bootstrap'
-import { useLocation } from 'react-router-dom'
+import { useLocation, useNavigate } from 'react-router-dom'
 import { useForm } from "react-hook-form";
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from "yup";
@@ -8,6 +8,10 @@ import Header from '../components/reusable/Header';
 import Hero from '../components/reusable/Hero';
 import Footer from '../components/reusable/Footer';
 import Divider from '../components/reusable/Divider';
+import { useDispatch, useSelector } from 'react-redux'
+import Loader from '../components/reusable/Loader'
+import { createOrder, resetState } from '../store/actions/orderActions';
+import toast from 'react-hot-toast';
 
 const breadcrumbs = {
     previous: 'Employee Info',
@@ -18,9 +22,11 @@ const breadcrumbs = {
 function AdditionalEmployeeForm() {
 
     const location = useLocation()
+    const dispatch = useDispatch()
+    const navigate = useNavigate()
 
-    //console.log(location.state)
-    const requiredData = location.state
+    console.log(location.state)
+    const requiredData = location.state.data
 
     const schema = yup.object({
         fathers_name: yup.string().required(),
@@ -54,8 +60,29 @@ function AdditionalEmployeeForm() {
             ...data
         }
         console.log(allData)
-        console.log(errors)
+        const submitData = {
+            cart_id : location.state.cart_id,
+            domestic : allData
+        }
+        dispatch(createOrder(submitData))
     }
+
+    const orderResponse = useSelector(state => state.order)
+    const { orderSucceeded, orderFailed, loading } = orderResponse
+
+    useEffect(() => {
+        if(orderSucceeded.error === false){
+            toast.success('Your order has been created successfully')
+            dispatch(resetState())
+            setTimeout(() => {
+                navigate('/orders')
+            }, 2000);
+        }
+        else if(orderFailed.status_code === 400){
+            toast.error('Your order failed')
+            dispatch(resetState())
+        }
+    }, [orderSucceeded, orderFailed,  dispatch, navigate])
 
     return (
         <>
@@ -65,7 +92,7 @@ function AdditionalEmployeeForm() {
                 <div className="register-form py-4">
                     <div className="mb-4">
                         <h5>Additional Employee Information</h5>
-                        <p className='text-grey mt-3'>Please enter the additional information of employee to assist in a thorough background check.</p>
+                        <p className='text-grey mt-3'>Please enter additional information of employee to assist in a thorough background check.</p>
                     </div>
                     <Form onSubmit={handleSubmit(onSubmit)}>
                         <Form.Group className="" >
@@ -204,7 +231,9 @@ function AdditionalEmployeeForm() {
                             {errors.reference_address?.message}
                         </Form.Text>
                         <Divider styles={{ width: '100%', margin: '30px 0 ' }} />
-                        <button className='my-3 border-0 w-100 rounded bg-pink text-white py-3'>Submit</button>
+                        <button className='my-3 border-0 w-100 rounded bg-pink text-white py-3'>
+                            { loading ? <Loader/> : 'Submit' }
+                        </button>
                     </Form>
                 </div>
             </Container>
