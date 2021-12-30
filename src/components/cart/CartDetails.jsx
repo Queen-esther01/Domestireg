@@ -38,10 +38,12 @@ function CartDetails() {
     const cookies = cookie.load('dreg')
 
     useEffect(() => {
-        const bouquetsInCart = cartItems && cartItems.map(item => item.bouquet[0].name).filter((value, index, self) => self.indexOf(value) === index)
-        const cartId = cartItems && cartItems.map(item => item._id).filter((value, index, self) => self.indexOf(value) === index)
-        setbouquetsInCart(bouquetsInCart)
-        setcartID(cartId)
+        if(cartItems.length){
+            const bouquetsInCart =  cartItems && cartItems.map(item => item.bouquet[0].name).filter((value, index, self) => self.indexOf(value) === index)
+            const cartId = cartItems && cartItems.map(item => item._id).filter((value, index, self) => self.indexOf(value) === index)
+            setbouquetsInCart(bouquetsInCart)
+            setcartID(cartId)
+        }
     }, [cartItems])
 
     
@@ -89,7 +91,7 @@ function CartDetails() {
         <>
             <Container fluid='lg'>
                 {
-                    cartItems.length === 0 || cookies === undefined ?
+                    cartItems && cartItems.length === 0 || cookies === undefined ?
                         <div className='text-center mt-5 pt-5'>
                             <div className="m-auto" style={{ width: '80px'}}>
                                 <img src={EmptyCart} alt="" className='w-100 h-100 object-fit-cover' />

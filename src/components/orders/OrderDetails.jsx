@@ -23,7 +23,7 @@ function OrderDetails({ orders, loading}) {
             <Container fluid='lg'>
                 {
                     loading ? <div className='text-center d-flex align-items-center justify-content-center' style={{ height: '300px'}}><Loader/></div>
-                    :   orders.length === 0 || cookies === undefined 
+                    :   orders && orders.length === 0 || cookies === undefined 
                     ?   <div className='text-center mt-5 pt-5'>
                             <div className="m-auto" style={{ width: '80px'}}>
                                 <img src={Clipboard} alt="" className='w-100 h-100 object-fit-cover' />

@@ -92,7 +92,7 @@ function Header() {
                     <div className='d-flex justify-content-between'>
                         {
                             cookies === undefined
-                            ?   <Icons icon='user' onClick={handleLoginModal} size={45} className='header-icon me-2 pointer hide-on-mobile bg-light-blue' />
+                            ?   <Icons icon='user' onClick={handleLoginModal} size={45} className='header-icon me-2 mt-2 pointer hide-on-mobile bg-light-blue' />
                             :   <Tippy content={
                                     <div className='my-2 px-3'>
                                         <p className=''> 

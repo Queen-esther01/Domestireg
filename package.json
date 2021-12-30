@@ -1,5 +1,6 @@
 {
   "name": "rebuilddomestireg",
+  "homepage": "https://domestireg.com",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
