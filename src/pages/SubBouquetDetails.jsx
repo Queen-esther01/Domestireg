@@ -1,30 +1,82 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { Badge, Col, Container, Row } from 'react-bootstrap'
 import { useLocation } from 'react-router-dom'
 import Footer from '../components/reusable/Footer'
 import Header from '../components/reusable/Header'
 import Hero from '../components/reusable/Hero'
 import Background from '../assets/images/background-check.jpg'
+import { addItemToCart, resetState } from '../store/actions/cartActions'
+import { useDispatch, useSelector } from 'react-redux'
+import Loader from '../components/reusable/Loader'
+import toast from 'react-hot-toast'
+import cookie from 'react-cookies'
+import Login from '../auth/Login'
 
 
 const breadcrumbs = {
-    previous: 'Medical Bouquet',
+    previous: 'Subbouquet',
     previousLink: '/subbouquet',
     current: 'Service details'
 }
 
 function SubBouquetDetails() {
 
+    const [showLoginModal, setshowLoginModal] = useState(false)
+
+    const dispatch = useDispatch()
     const location = useLocation()
     //console.log(location)
 
     const serviceDetails = location.state.info
 
-    console.log(serviceDetails)
+    //console.log(serviceDetails)
+    const token = cookie.load('dreg')
+
+    const addServiceToCart = (service) => {
+        const data = {
+            cartItems: {
+                subbouquet_id: service._id
+            }
+        }
+        //console.log(service)
+        if(token === undefined){
+            toast.error('Please login to add item to cart')
+            setshowLoginModal(true)
+        }
+        else{
+            dispatch(addItemToCart(data))
+        }
+    }
+
+
+    const cart = useSelector(state => state.cart)
+    const { addToCartSucceeded, addToCartFailed, addToCartLoading } = cart
+    console.log(addToCartSucceeded)
+    console.log(addToCartLoading)
+
+
+    useEffect(() => {
+        if(addToCartSucceeded.error === false){
+
+            toast.success(`${serviceDetails.name} has been added to cart.`, {
+                id: 'cart-success',
+            })
+
+            setTimeout(() => {
+                dispatch(resetState())
+            }, 1000)
+        }
+        else if(addToCartFailed.error === true){
+            toast.error(addToCartFailed.message)
+            dispatch(resetState())
+        }
+    }, [addToCartSucceeded, addToCartFailed])
+
     
 
     return (
         <>
+            <Login open={showLoginModal} onClose={()=>setshowLoginModal(false)}/>
             <Header />
             <Hero breadcrumb={breadcrumbs} extraStyle='medical-hero text-white'/>
                 <Container fluid='lg'>
@@ -53,7 +105,9 @@ function SubBouquetDetails() {
                                     }
                                 </ul>
                                 <div>
-                                    <button className=' mt-2 button-primary'>Add to cart</button>
+                                    <button className=' mt-2 button-primary' onClick={()=>addServiceToCart(serviceDetails)}>
+                                        { addToCartLoading ? <Loader/> : 'Add to cart' }
+                                    </button>
                                 </div>
                             </div>
                         </Col>

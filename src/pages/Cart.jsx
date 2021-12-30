@@ -5,10 +5,10 @@ import Header from '../components/reusable/Header'
 import Hero from '../components/reusable/Hero'
 
 const breadcrumbs = {
-        previous: 'Home',
-        previousLink: '/',
-        current: 'Cart'
-    }
+    previous: 'Home',
+    previousLink: '/',
+    current: 'Cart'
+}
 
 
 function Cart() {

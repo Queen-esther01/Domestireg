@@ -4,7 +4,7 @@ import SubBouquetList from '../components/reusable/SubBouquetList'
 import Footer from '../components/reusable/Footer'
 import Header from '../components/reusable/Header'
 import { useSelector, useDispatch } from 'react-redux'
-import { useLocation } from 'react-router-dom'
+import { Navigate, useLocation } from 'react-router-dom'
 import { getSubBouquets } from '../store/actions/bouquetActions'
 import Hero from '../components/reusable/Hero'
 
@@ -29,10 +29,10 @@ function SubBouquets() {
     const location = useLocation()
     const dispatch = useDispatch()
 
-    const data = location.state.data
+    const data = location.state && location.state.data
 
     useEffect(() => {
-        setid(data._id)
+        setid(data && data._id)
     }, [data])
 
     const response = useSelector(state => state.bouquet)
@@ -47,7 +47,8 @@ function SubBouquets() {
     const subBouquetListData = subBouquets.data && subBouquets.data.filter(subBouquet => subBouquet.name !== 'Medical Add-ons')
 
     const medicalAddons = subBouquets.data && subBouquets.data.filter(subBouquet => subBouquet.name === 'Medical Add-ons')
-
+    //console.log(location.state.data )
+    if(location.state === null) return <Navigate to='/' />
     return (
         <>
             <Header/>

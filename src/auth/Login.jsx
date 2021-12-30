@@ -48,7 +48,9 @@ function Login({ open, onClose }) {
     useEffect(() => {
         if(login.code === 200){
 
-            toast.success('You have successfully logged in!')
+            toast.success('You have successfully logged in!', {
+                id: 'login-success',
+            })
 
             setTimeout(() => {
                 localStorage.setItem('dreg', JSON.stringify(login.user))

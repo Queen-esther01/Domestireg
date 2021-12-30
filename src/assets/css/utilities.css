@@ -121,6 +121,12 @@
 .text-red{
     color: red;
 }
+.bg-red{
+    background: red;
+}
 .hover-blue:hover{
     color: var(--color-blue);
+}
+.text-green{
+    color: var(--color-success);
 }

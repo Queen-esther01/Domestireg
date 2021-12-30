@@ -7,6 +7,7 @@ import {user} from '../../utils/userInfo'
 import Logout from '../../auth/Logout';
 import { useDispatch, useSelector } from 'react-redux';
 import { getBouquets } from '../../store/actions/bouquetActions';
+import { getCartItems } from '../../store/actions/cartActions';
 
 function OffCanvas({ showSidebar, handleSidebar, toggleLogin }) {
     
@@ -22,6 +23,7 @@ function OffCanvas({ showSidebar, handleSidebar, toggleLogin }) {
 
     useEffect(() => {
         dispatch(getBouquets())
+        dispatch(getCartItems())
     }, [dispatch])
 
     const data = useSelector(state => state.bouquet)
@@ -35,6 +37,9 @@ function OffCanvas({ showSidebar, handleSidebar, toggleLogin }) {
         })
         window.location.reload(false)
     }
+
+    const cart = useSelector(state => state.cart)
+    const { cartItems } = cart
     
     return (
         <>
@@ -81,11 +86,11 @@ function OffCanvas({ showSidebar, handleSidebar, toggleLogin }) {
                                             <div className="d-flex align-items-center ml-3">
                                                 <Icons icon='shopping-cart' size={15} />
                                                 &nbsp; &nbsp;Cart &nbsp;
-                                                <Badge bg="secondary" className='bg-pink'>0</Badge>
+                                                <Badge bg="secondary" className='bg-pink'>{cartItems.length || 0}</Badge>
                                             </div>
                                         </NavDropdown.Item>
                                         <NavDropdown.Divider />
-                                        <NavDropdown.Item href="/order">
+                                        <NavDropdown.Item href="/orders">
                                             <div className="d-flex align-items-center ml-3">
                                                 <Icons icon='shopping-bag' size={15} />
                                                 &nbsp; &nbsp;Orders

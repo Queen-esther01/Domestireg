@@ -13,6 +13,7 @@ import { user } from '../../utils/userInfo';
 import Logout from '../../auth/Logout';
 import { getBouquets } from '../../store/actions/bouquetActions';
 import { useSelector, useDispatch } from 'react-redux';
+import { getCartItems } from '../../store/actions/cartActions';
 
 function Header() {
 
@@ -42,6 +43,7 @@ function Header() {
 
     useEffect(() => {
         dispatch(getBouquets())
+        dispatch(getCartItems())
     }, [dispatch])
 
     const data = useSelector(state => state.bouquet)
@@ -55,6 +57,9 @@ function Header() {
         })
         window.location.reload(false)
     }
+
+    const cart = useSelector(state => state.cart)
+    const { cartItems } = cart
 
 
 
@@ -103,10 +108,10 @@ function Header() {
                                     </div>
                                 </Tippy>
                         }
-                        <Link to='/cart' className='remove-link-color position-relative'>
-                            <Icons icon='shopping-cart' size={45} className='header-icon pointer bg-light-pink' />
-                            <Badge bg="secondary" className='bg-pink rounded-circle position-absolute' style={{ right: '-5px', top: '-6px' }}>0</Badge>
-                        </Link>
+                        <Nav.Link href='/cart' className='remove-link-color position-relative'>
+                            <Icons icon='shopping-cart' size={45} className='header-icon pointer text-dark bg-light-pink' />
+                            <Badge bg="secondary" className='bg-pink rounded-circle position-absolute' style={{ right: '-5px', top: '0' }}>{cartItems.length || 0}</Badge>
+                        </Nav.Link>
                     </div>
                 </div>
             </Container>

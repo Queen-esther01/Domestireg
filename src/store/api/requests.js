@@ -27,7 +27,7 @@ const requests = ({dispatch}) => next => async action =>{
             method,
             data,
             headers: {
-                // Authorization: `Bearer ${token}`,
+                Authorization: `Bearer ${token}`,
                 'Content-Type': contentType || 'application/json',
                 'Accept': 'application/json'
             }

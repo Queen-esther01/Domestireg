@@ -13,6 +13,9 @@ import SubBouquetDetails from './pages/SubBouquetDetails';
 import Verify from './auth/Verify';
 import ConfigureStore from './store/configureStore';
 import { Provider } from 'react-redux';
+import DomesticEmployeeForm from './pages/DomesticEmployeeForm';
+import AdditionalEmployeeForm from './pages/AdditionalEmployeeForm';
+import Order from './pages/Order';
 
 const store = ConfigureStore()
 
@@ -31,6 +34,9 @@ function App() {
           <Route path="/cart" element={<Cart />} />
           <Route path="/subbouquet" element={<SubBouquets/>} />
           <Route path="/subbouquet/:id" element={<SubBouquetDetails/>} />
+          <Route path="/checkoutform" element={<DomesticEmployeeForm/>} />
+          <Route path="/checkoutform/additionalinfo" element={<AdditionalEmployeeForm/>} />
+          <Route path="/orders" element={<Order/>} />
         </Routes>
       </Provider>
     </Router>
