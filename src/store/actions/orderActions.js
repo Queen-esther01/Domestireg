@@ -12,6 +12,7 @@ const orderSlice = createSlice({
         orderSucceeded: [],
         orderFailed: [],
         uploadSucceeded: [],
+        verifyOrder: [],
         loading: false,
         uploadLoading: false,
         paymentLoading: false
@@ -50,10 +51,19 @@ const orderSlice = createSlice({
             status.orders = action.payload.data
             status.loading = false
         },
+        verifyOrderSucceeded: (status, action) =>{
+            status.verifyOrder = action.payload
+            status.loading = false
+        },
+        verifyOrderFailed: (status, action) =>{
+            status.verifyOrder = action.payload
+            status.loading = false
+        },
         resetState: ( status, action ) => {
             status.uploadSucceeded = []
             status.orderSucceeded = []
             status.orderFailed = []
+            status.verifyOrder = []
         }
     }
 })
@@ -103,6 +113,21 @@ export const getOrders = () =>{
     }
 }
 
+export const verifyOrders = (data) =>{
+    return (dispatch) => {
+        dispatch(
+            API_REQUEST_BEGAN({
+                url: `${baseurl}user/payment/verify`,
+                onStart: orderRequestBegan.type,
+                onSuccess: verifyOrderSucceeded.type,
+                onError: verifyOrderFailed.type,
+                method: 'post',
+                data: data,
+            })
+        )
+    }
+}
+
 
 
 
@@ -118,6 +143,8 @@ export const {
     createOrdersFailed,
     getOrdersSucceeded,
     getOrdersFailed,
+    verifyOrderSucceeded,
+    verifyOrderFailed,
     resetState
 } = orderSlice.actions
 

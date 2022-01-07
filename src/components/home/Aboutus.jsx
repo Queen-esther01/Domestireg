@@ -18,7 +18,7 @@ function Aboutus() {
                         <div className='about-us-description'>
                             <span className='about-us-tagline'>A few words about us</span>
                             <h2 className='about-us-heading'>With you every step of the way</h2>
-                            <p className='about-us-text'>We partner with you to design a plans that fits your needs, or help you choose from our pre-bundled packages.</p>
+                            <p className='about-us-text'>We partner with you to design plans that fit your needs, or help you choose from our pre-bundled packages.</p>
                             <p className='about-us-text'>Our customer service team is standing by to answer any screening, compliance, or how-to questions that either you or your candidates have, and we keep you both updated about the status of your checks, vets & enquiries.</p>
                             <div className='d-flex align-items-center'>
                                 <div className='founder-image-container'>

@@ -133,7 +133,7 @@ function DomesticEmployeeForm() {
                 window.open(orderSucceeded.data.checkout)
             }, 2000);
         }
-        else if(orderFailed.status_code === 400){
+        else if(orderFailed.status_code === 400 || orderSucceeded.error === true){
             toast.error('Your order failed')
             dispatch(resetState())
         }
@@ -267,26 +267,31 @@ function DomesticEmployeeForm() {
                             {errors.image?.message}
                         </Form.Text>
                         <Divider styles={{ width: '100%', margin: '30px 0 ' }} />
-                        <Form.Group className="mt-3" >
-                            <Form.Label>What is your reason for the testing employee?</Form.Label>
-                            <Form.Control {...register('reason')} isInvalid={!!errors.reason} type="text" className='' />
-                        </Form.Group>
-                        <Form.Text className="text-red mb-3">
-                            {errors.reason?.message}
-                        </Form.Text>
-                        <Form.Group className="mt-3" >
-                            <Form.Label>Has the employee suffered from any severe illness?</Form.Label>
-                            <Form.Select {...register('severe_illness')} name='severe_illness'>
-                                <option> Please select response </option>
-                                <option value={true}> Yes </option>
-                                <option value={false}> No </option>
-                                <option> I don't know </option>
-                            </Form.Select>
-                        </Form.Group>
-                        <Form.Text className="text-red mb-3">
-                            {errors.severe_illness?.message}
-                        </Form.Text>
-                        <Divider styles={{ width: '100%', margin: '30px 0 ' }} />
+                        {
+                            checks.includes('Medical Check') &&
+                            <>
+                                <Form.Group className="mt-3" >
+                                    <Form.Label>What is your reason for the testing employee?</Form.Label>
+                                    <Form.Control {...register('reason')} isInvalid={!!errors.reason} type="text" className='' />
+                                </Form.Group>
+                                <Form.Text className="text-red mb-3">
+                                    {errors.reason?.message}
+                                </Form.Text>
+                                <Form.Group className="mt-3" >
+                                    <Form.Label>Has the employee suffered from any severe illness?</Form.Label>
+                                    <Form.Select {...register('severe_illness')} name='severe_illness'>
+                                        <option> Please select response </option>
+                                        <option value={true}> Yes </option>
+                                        <option value={false}> No </option>
+                                        <option> I don't know </option>
+                                    </Form.Select>
+                                </Form.Group>
+                                <Form.Text className="text-red mb-3">
+                                    {errors.severe_illness?.message}
+                                </Form.Text>
+                                <Divider styles={{ width: '100%', margin: '30px 0 ' }} />
+                            </>
+                        }
                         <Form.Group className="mt-3" >
                             <Form.Check 
                                 {...register('staff_copy')} 

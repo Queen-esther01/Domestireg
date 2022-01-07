@@ -12,7 +12,7 @@ function Info() {
                         and fact finding service. We assist our clients in 
                         vetting all their staff; to ensure they know exactly 
                         who they are hiring and to ensure the safety of the 
-                        most important people - <span className='font-bold'> their family" </span>
+                        most important people - <span className='font-bold'> their family </span>
                     </p>
                 </div>
                 

@@ -14,6 +14,7 @@ const userSlice = createSlice({
         login: [],
         forgotPassword: [],
         resetPassword: [],
+        contact: [],
         loading: false,
     },
     reducers: {
@@ -70,6 +71,14 @@ const userSlice = createSlice({
             status.resetPassword = action.payload
             status.loading = false
         },
+        userContactSucceeded: (status, action) =>{
+            status.contact = action.payload
+            status.loading = false
+        },
+        userContactFailed: (status, action) =>{
+            status.contact = action.payload
+            status.loading = false
+        },
         resetState: ( status, action ) => {
             status.registration = []
             status.verification = []
@@ -77,6 +86,7 @@ const userSlice = createSlice({
             status.login = []
             status.forgotPassword = []
             status.resetPassword = []
+            status.contact = []
         }
     }
 })
@@ -172,6 +182,23 @@ export const userResetPassword = (data) =>{
     }
 }
 
+export const userContactAdmin = (data) =>{
+    return (dispatch) => {
+        dispatch(
+            API_REQUEST_BEGAN({
+                url: `${baseurl}contact`,
+                onStart: userAuthBegan.type,
+                onSuccess: userContactSucceeded.type,
+                onError: userContactFailed.type,
+                method: 'post',
+                data : data
+            })
+        )
+    }
+}
+
+
+
 
 
 
@@ -189,6 +216,8 @@ export const {
     userForgotPasswordFailed,
     userResetPasswordSucceeded,
     userResetPasswordFailed,
+    userContactSucceeded,
+    userContactFailed,
     resetState,
 } = userSlice.actions
 

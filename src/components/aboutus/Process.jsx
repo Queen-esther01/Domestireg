@@ -10,8 +10,8 @@ function Process() {
                     <Col xs={12} lg={6}>
                         <div className='our-story-description mt-5'>
                             <span className='about-us-tagline'>Why we do what we do</span>
-                            <p className='about-us-text'>At Domestireg we understand hiring a stranger into your home an be quite daunting and sometimes downright hairy, knowing an applicant applicants identity is an incredibly critical part of the employment screening process. Navigating the information to ensure the safety of your family and loved ones is critical, as such we are proud to offer a variety of services to help you do this easily.</p>
-                            <p className='about-us-text'>We help you make decisions on hiring the right person faster ,we deliver medical and criminal background checks and real time results as they are available ,accelerate communication between third parties and leverage mobile first technology to speed the decision making time.</p>
+                            <p className='about-us-text'>At Domestireg we understand hiring a stranger into your home can be quite daunting and sometimes downright hairy. Knowing an applicants identity is an incredibly critical part of the employment screening process. Navigating the information to ensure the safety of your family and loved ones is critical, as such we are proud to offer a variety of services to help you do this easily.</p>
+                            <p className='about-us-text'>We help you make decisions on hiring the right person faster ,we deliver medical and criminal background checks and real time results as they are available, accelerate communication between third parties and leverage mobile first technology to speed the decision making time.</p>
                         </div>
                     </Col>
                     <Col xs={12} lg={6}>

@@ -79,13 +79,13 @@ function Register() {
         }
     }
 
+
     //GET REGISTER RESPONSE DATA
     const registerResponse = useSelector(state => state.user)
     const { registration, loading } = registerResponse
     console.log(registration)
 
     
-
     useEffect(() => {
         if(registration.data){
 
@@ -101,7 +101,7 @@ function Register() {
         }
         else if(registration.code === 401){
             toast.error('Sorry, this user already exists.')
-            resetState()
+            dispatch(resetState())
         }
     }, [registration, watch ])
 
